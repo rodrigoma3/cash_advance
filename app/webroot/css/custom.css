@@ -1,0 +1,60 @@
+.form-actions {
+    display: block;
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 19px 20px 20px;
+}
+
+form .required label::after {
+    content: ' *';
+    color: red;
+    display: inline;
+}
+
+div.form-group label {
+    font-weight: bold;
+    padding-right: 15px;
+}
+
+.form-error, .error > .cke {
+    border-color: red !important;
+}
+
+.error-message {
+    color: red;
+}
+
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: inline !important;
+}
+
+div.form-group:not(.control-group) {
+    margin-bottom: 15px !important;
+    margin-right: 20px;
+}
+
+div.dataTables_filter {
+    float: right;
+}
+
+/* td.details-control {
+    content: "\f055" no-repeat center center;
+    cursor: pointer;
+} */
+
+/* tr.shown td.details-control {
+    content: "\f056" no-repeat center center;
+} */
+
+/* table.dataTable {
+    width: 100% !important;
+    border-spacing: 0;
+    border-collapse: collapse;
+} */
+
+/* div.dataTables_wrapper {
+    width: 100%;
+    margin: 0 auto;
+} */

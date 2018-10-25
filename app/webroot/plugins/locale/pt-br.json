@@ -1,0 +1,100 @@
+
+
+{
+    "sEmptyTable": "Nenhum registro encontrado",
+    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+    "sInfoPostFix": "",
+    "sInfoThousands": ".",
+    "sLoadingRecords": "Carregando...",
+    "sProcessing": "Processando...",
+    "sZeroRecords": "Nenhum registro encontrado",
+    "sSearch": "_INPUT_",
+    "sSearchPlaceholder": "Pesquisar",
+    "oPaginate": {
+        "sNext": "Próximo",
+        "sPrevious": "Anterior",
+        "sFirst": "Primeiro",
+        "sLast": "Último"
+    },
+    "oAria": {
+        "sSortAscending": ": Ordenar colunas de forma ascendente",
+        "sSortDescending": ": Ordenar colunas de forma descendente"
+    },
+	"decimal": ",",
+    "thousands": ".",
+	"buttons": {
+		"colvis": "Ver colunas",
+		"colvisRestore": "Restaurar colunas",
+		"pageLength": {
+            "_": "Mostrando %d linhas",
+            "-1": "Mostrando tudo"
+        },
+		"copy": "Copiar",
+		"copyTitle": "Copiado para área de transferencia",
+		"copySuccess": {
+			"_": "Copiado %d linhas",
+			"1": "Copiado 1 linha"
+		},
+        "print": "Imprimir"
+	},
+	"select": {
+        "rows": {
+            "_": "%d linhas selecionadas",
+            "0": "",
+            "1": "1 linha selecionada"
+        }
+    },
+    "oLocale": {
+        "all": "Tudo",
+        "showAll": "Mostrar tudo",
+        "showNone": "Mostrar nenhum",
+        "resetColReorder": "Resetar ordem das colunas",
+        "export": "Exportar",
+		"nonSelectedListLabel": "Não selecionados",
+		"selectedListLabel": "Selecionados",
+		"filterTextClear": "Mostrar todos",
+		"filterPlaceHolder": "filtro",
+		"moveAllLabel": "Mover todos",
+		"removeAllLabel": "Remover todos",
+		"infoText": "Mostrando todos {0}",
+		"infoTextFiltered": "<span class='label label-warning'>Filtrado</span> {0} de {1}",
+		"infoTextEmpty": "Lista vazia",
+        "infoTextDropzone": "Solte arquivos aqui ou clique para escolher",
+		"confirmRemoveDropzone": "Tem certeza que deseja remover o arquivo?",
+        "rowvis": "Ver linhas",
+		"rowvisSelected": "Linhas selecionadas",
+		"rowvisRestore": "Restaurar linhas",
+        "changeImage": "Alterar imagem",
+        "fileSizeError": "Arquivo muito grande! Tamanho do arquivo não pode exceder ",
+        "fileFormatError": "Arquivo inválido! Por favor, escolha uma imagem jpg | jpeg | png.",
+        "oTooltips": {
+            "today": "Ir para hoje",
+            "clear": "Limpar seleção",
+            "close": "Fechar o selecionador",
+            "selectMonth": "Selecionar Mês",
+            "prevMonth": "Mês Anterior",
+            "nextMonth": "Próximo Mês",
+            "selectYear": "Selecionar Ano",
+            "prevYear": "Ano Anterior",
+            "nextYear": "Próximo Ano",
+            "selectDecade": "Selecionar Década",
+            "prevDecade": "Década Anterior",
+            "nextDecade": "Próxima Década",
+            "prevCentury": "Século Anterior",
+            "nextCentury": "Próxima Século",
+            "pickHour": "Escolher Hora",
+            "incrementHour": "Incrementar Hora",
+            "decrementHour": "Decrementar Hora",
+            "pickMinute": "Escolher Minuto",
+            "incrementMinute": "Incrementar Minuto",
+            "decrementMinute": "Decrementar Minuto",
+            "pickSecond": "Escolher Segundo",
+            "incrementSecond": "Incrementar Segundo",
+            "decrementSecond": "Decrementar Segundo",
+            "togglePeriod": "Período Alternativo",
+            "selectTime": "Selecionar Horário"
+        }
+    }
+}

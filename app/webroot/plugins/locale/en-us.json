@@ -1,0 +1,100 @@
+
+
+{
+	"sEmptyTable":     "No data available in table",
+	"sInfo":           "Showing _START_ to _END_ of _TOTAL_ entries",
+	"sInfoEmpty":      "Showing 0 to 0 of 0 entries",
+	"sInfoFiltered":   "(filtered from _MAX_ total entries)",
+	"sInfoPostFix":    "",
+	"sInfoThousands":  ",",
+	"sLoadingRecords": "Loading...",
+	"sProcessing":     "Processing...",
+	"sSearch": "_INPUT_",
+    "sSearchPlaceholder": "Search",
+	"sZeroRecords":    "No matching records found",
+	"oPaginate": {
+		"sFirst":    "First",
+		"sLast":     "Last",
+		"sNext":     "Next",
+		"sPrevious": "Previous"
+	},
+	"oAria": {
+		"sSortAscending":  ": activate to sort column ascending",
+		"sSortDescending": ": activate to sort column descending"
+	},
+	"decimal": ".",
+    "thousands": ",",
+	"buttons": {
+		"colvis": "Column visibility",
+		"colvisRestore": "Restore visibility",
+		"pageLength": {
+            "_": "Show %d rows",
+            "-1": "Show all"
+        },
+		"copy": "Copy",
+		"copyTitle": "Copy to clipboard",
+		"copySuccess": {
+			"_": "Copied %d lines",
+			"1": "Copied 1 line"
+		},
+        "print": "Print"
+	},
+	"select": {
+        "rows": {
+            "_": "%d rows selected",
+            "0": "",
+            "1": "1 row selected"
+        }
+    },
+	"oLocale": {
+		"all": "All",
+        "showAll": "Show all",
+        "showNone": "Show none",
+		"resetColReorder": "Reset column order",
+        "export": "Export",
+		"nonSelectedListLabel": "Non-selected",
+		"selectedListLabel": "Selected",
+		"filterTextClear": "Show all",
+		"filterPlaceHolder": "filter",
+		"moveAllLabel": "Move all",
+		"removeAllLabel": "Remove all",
+		"infoText": "Showing all {0}",
+		"infoTextFiltered": "<span class='label label-warning'>Filtered</span> {0} from {1}",
+		"infoTextEmpty": "Empty list",
+        "infoTextDropzone": "Drop files here or click to choose",
+		"confirmRemoveDropzone": "Are you sure you want to remove the file?",
+		"rowvis": "Row visibility",
+		"rowvisSelected": "Rows selected",
+		"rowvisRestore": "Restore visibility",
+        "changeImage": "Change image",
+        "fileSizeError": "File too large! File size can not exceed ",
+        "fileFormatError": "Invalid file! Please choose an image jpg | jpeg | png.",
+        "tooltips": {
+            "today": "Go to today",
+            "clear": "Clear selection",
+            "close": "Close the picker",
+            "selectMonth": "Select Month",
+            "prevMonth": "Previous Month",
+            "nextMonth": "Next Month",
+            "selectYear": "Select Year",
+            "prevYear": "Previous Year",
+            "nextYear": "Next Year",
+            "selectDecade": "Select Decade",
+            "prevDecade": "Previous Decade",
+            "nextDecade": "Next Decade",
+            "prevCentury": "Previous Century",
+            "nextCentury": "Next Century",
+            "pickHour": "Pick Hour",
+            "incrementHour": "Increment Hour",
+            "decrementHour": "Decrement Hour",
+            "pickMinute": "Pick Minute",
+            "incrementMinute": "Increment Minute",
+            "decrementMinute": "Decrement Minute",
+            "pickSecond": "Pick Second",
+            "incrementSecond": "Increment Second",
+            "decrementSecond": "Decrement Second",
+            "togglePeriod": "Toggle Period",
+            "selectTime": "Select Time"
+        }
+    }
+}

@@ -1,0 +1,101 @@
+
+
+{
+	"sProcessing":     "Procesando...",
+	"sZeroRecords":    "No se encontraron resultados",
+	"sEmptyTable":     "Ningún dato disponible en esta tabla",
+	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+	"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+	"sInfoPostFix":    "",
+	"sSearch": "_INPUT_",
+    "sSearchPlaceholder": "Buscar",
+	"sUrl":            "",
+	"sInfoThousands":  ",",
+	"sLoadingRecords": "Cargando...",
+	"oPaginate": {
+		"sFirst":    "Primero",
+		"sLast":     "Último",
+		"sNext":     "Siguiente",
+		"sPrevious": "Anterior"
+	},
+	"oAria": {
+		"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+	},
+	"decimal": ".",
+    "thousands": ",",
+	"buttons": {
+		"colvis": "Ver colunas (es-es)",
+		"colvisRestore": "Restaurar colunas (es-es)",
+		"pageLength": {
+            "_": "Mostrando %d linhas (es-es)",
+            "-1": "Mostrando tudo (es-es)"
+        },
+		"copy": "Copiar (es-es)",
+		"copyTitle": "Copiado para área de transferencia (es-es)",
+		"copySuccess": {
+			"_": "Copiado %d linhas (es-es)",
+			"1": "Copiado 1 linha (es-es)"
+		},
+        "print": "Imprimir (es-es)"
+	},
+	"select": {
+        "rows": {
+            "_": "%d líneas seleccionadas",
+            "0": "",
+            "1": "1 línea seleccionada"
+        }
+    },
+    "oLocale": {
+		"all": "Tudo (es-es)",
+        "showAll": "Mostrar tudo (es-es)",
+        "showNone": "Mostrar nenhum (es-es)",
+        "resetColReorder": "Resetar ordem das colunas (es-es)",
+        "export": "Exportar (es-es)",
+		"nonSelectedListLabel": "No seleccionado",
+		"selectedListLabel": "Seleccionado",
+		"filterTextClear": "Mostrar todos",
+		"filterPlaceHolder": "filtro",
+		"moveAllLabel": "Mover todo",
+		"removeAllLabel": "Retire todo",
+		"infoText": "Mostrando toda {0}",
+		"infoTextFiltered": "<span class='label label-warning'>Filtrada</span> {0} de {1}",
+		"infoTextEmpty": "Lista vacía",
+        "infoTextDropzone": "Soltar archivos aquí o haga clic para elegir",
+		"confirmRemoveDropzone": "¿Está seguro de que desea eliminar el archivo?",
+		"rowvis": "Ver líneas",
+		"rowvisSelected": "Líneas seleccionadas",
+		"rowvisRestore": "Restaurar las líneas",
+        "changeImage": "Cambiar la imagen",
+        "fileSizeError": "Archivo muy grande! Tamaño del archivo no puede exceder ",
+        "fileFormatError": "Archivo no válido! Por favor, seleccione una imagen jpg | jpeg | png.",
+        "tooltips": {
+            "today": "Ir a hoy",
+            "clear": "Selección clara",
+            "close": "Cerrar el selector",
+            "selectMonth": "Seleccione mes",
+            "prevMonth": "Mes anterior",
+            "nextMonth": "Próximo mes",
+            "selectYear": "Seleccione un año",
+            "prevYear": "Año anterior",
+            "nextYear": "Próximo año",
+            "selectDecade": "Seleccione Década",
+            "prevDecade": "Década anterior",
+            "nextDecade": "Próxima Década",
+            "prevCentury": "Siglo anterior",
+            "nextCentury": "Próximo siglo",
+            "pickHour": "Elegir Hora",
+            "incrementHour": "Incremento Hora",
+            "decrementHour": "Decremento Hora",
+            "pickMinute": "Elegir minutos",
+            "incrementMinute": "Incremento Minuto",
+            "decrementMinute": "Decremento Minuto",
+            "pickSecond": "Elegir segundo",
+            "incrementSecond": "Incremento Segundo",
+            "decrementSecond": "Decremento Segundo",
+            "togglePeriod": "Período de conmutación",
+            "selectTime": "Seleccione el tiempo"
+        }
+    }
+}
