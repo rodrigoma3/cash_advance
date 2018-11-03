@@ -4,18 +4,9 @@ App::uses('AppController', 'Controller');
  * Proas Controller
  *
  * @property Proa $Proa
- * @property PaginatorComponent $Paginator
- * @property SessionComponent $Session
- * @property FlashComponent $Flash
  */
 class ProasController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator', 'Session', 'Flash');
 
 /**
  * index method
@@ -23,25 +14,9 @@ class ProasController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Proa->recursive = 0;
+		// $this->Proa->recursive = 0;
         $proas = $this->Proa->find('all');
 		$this->set(compact('proas'));
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Proa->exists($id)) {
-			throw new NotFoundException(__('Invalid proa'));
-		}
-		$options = array('conditions' => array($this->Proa->alias . '.' . $this->Proa->primaryKey => $id));
-         $proa = $this->Proa->find('first', $options);
-		$this->set(compact('proa'));
 	}
 
 /**
@@ -60,8 +35,17 @@ class ProasController extends AppController {
 			}
 		}
 		$users = $this->Proa->User->find('list');
-		$rubrics = $this->Proa->Rubric->find('list');
-        $fields = array();
+		$rubrics = $this->Proa->Rubric->find('all', array('fields' => array('id', 'number', 'description')));
+		$rubrics = Hash::combine($rubrics, '{n}.Rubric.id', array('%s - %s', '{n}.Rubric.number', '{n}.Rubric.description'));
+        $fields = array(
+			'proa',
+			'total_value',
+			'start_date' => array('value' => date('Y-m-d')),
+			'end_date' => array('value' => date('Y-m-d', strtotime('+ 30 days'))),
+			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 60 days'))),
+			'user_id',
+			'rubric_id',
+		);
         $blacklist = array();
         $this->set(compact('fields', 'blacklist', 'users', 'rubrics'));
 	}
@@ -89,8 +73,19 @@ class ProasController extends AppController {
 			$this->request->data = $this->Proa->find('first', $options);
 		}
 		$users = $this->Proa->User->find('list');
-		$rubrics = $this->Proa->Rubric->find('list');
-        $fields = array();
+		$rubrics = $this->Proa->Rubric->find('list', array('fields' => array('number', 'description')));
+		$rubrics = $this->Proa->listKeyValueInValue($rubrics);
+        $fields = array(
+			'id',
+			'proa',
+			'proa_pct',
+			'total_value',
+			'start_date',
+			'end_date',
+			'pct_date',
+			'user_id',
+			'rubric_id',
+		);
         $blacklist = array();
         $this->set(compact('fields', 'blacklist', 'users', 'rubrics'));
 	}
@@ -107,11 +102,15 @@ class ProasController extends AppController {
 		if (!$this->Proa->exists()) {
 			throw new NotFoundException(__('Invalid proa'));
 		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Proa->delete()) {
-			$this->Flash->success(__('The proa has been deleted.'));
+		if (!empty($this->Proa->read()[$this->Proa->Check->alias])) {
+			$this->Flash->error(__('The proa could not be deleted because it has linked checks.'));
 		} else {
-			$this->Flash->error(__('The proa could not be deleted. Please, try again.'));
+			$this->request->allowMethod('post', 'delete');
+			if ($this->Proa->delete()) {
+				$this->Flash->success(__('The proa has been deleted.'));
+			} else {
+				$this->Flash->error(__('The proa could not be deleted. Please, try again.'));
+			}
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

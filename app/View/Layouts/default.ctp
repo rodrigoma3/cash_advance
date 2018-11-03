@@ -42,34 +42,44 @@
 	?>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<?php echo $this->Html->link(__('Cash advance'), '/', array('escape' => false, 'class' => 'navbar-brand')); ?>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <?php echo $this->Html->link('<i class="fas fa-folder-open"></i>&nbsp;'.__('Proas'), array('controller' => 'proas', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
-          </li>
-          <li class="nav-item">
-            <?php echo $this->Html->link('<i class="fas fa-file-signature"></i>&nbsp;'.__('Rubrics'), array('controller' => 'rubrics', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
-          </li>
-          <li class="nav-item">
-              <?php echo $this->Html->link('<i class="fas fa-users"></i>&nbsp;'.__('Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
-          </li>
-        </ul>
-      </div>
-    </nav>
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<div class="container">
+			<?php echo $this->Html->link(__('Cash advance'), '/', array('escape' => false, 'class' => 'navbar-brand')); ?>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item <?php if ($this->params['controller'] == 'proas' && $this->params['action'] == 'index') echo 'active'; ?>">
+				  <?php echo $this->Html->link('<i class="fas fa-folder-open"></i>&nbsp;'.__('Proas'), array('controller' => 'proas', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
+			  </li>
+			  <li class="nav-item <?php if ($this->params['controller'] == 'rubrics' && $this->params['action'] == 'index') echo 'active'; ?>">
+				<?php echo $this->Html->link('<i class="fas fa-file-signature"></i>&nbsp;'.__('Rubrics'), array('controller' => 'rubrics', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
+			  </li>
+			  <li class="nav-item <?php if ($this->params['controller'] == 'users' && $this->params['action'] == 'index') echo 'active'; ?>">
+				  <?php echo $this->Html->link('<i class="fas fa-users"></i>&nbsp;'.__('Users'), array('controller' => 'users', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
+			  </li>
+			  <li class="nav-item <?php if ($this->params['controller'] == 'users' && $this->params['action'] == 'updatePassword') echo 'active'; ?>">
+				  <?php echo $this->Html->link('<i class="fas fa-key"></i>&nbsp;'.__('Update Password'), array('controller' => 'users', 'action' => 'updatePassword'), array('escape' => false, 'class' => 'nav-link')); ?>
+			  </li>
+			</ul>
+			<ul class="navbar-nav pull-right">
+				<li class="nav-item">
+					<?php echo $this->Html->link('<i class="fas fa-sign-out-alt"></i>&nbsp;'.__('Logout'), array('controller' => 'users', 'action' => 'logout'), array('escape' => false, 'class' => 'nav-link')); ?>
+				</li>
+			</ul>
+		  </div>
+		</div>
+	</nav>
 
     <main role="main" class="container">
-	<!-- <div class="container"> -->
+
+		<?php echo $this->Flash->render('auth'); ?>
 
 		<?php echo $this->Flash->render(); ?>
 
 		<?php echo $this->fetch('content'); ?>
-	<!-- </div> -->
-
 
     </main>
 

@@ -4,44 +4,26 @@ App::uses('AppController', 'Controller');
  * Checks Controller
  *
  * @property Check $Check
- * @property PaginatorComponent $Paginator
- * @property SessionComponent $Session
- * @property FlashComponent $Flash
  */
 class ChecksController extends AppController {
 
 /**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator', 'Session', 'Flash');
-
-/**
- * index method
+ * proa method
  *
  * @return void
  */
-	public function index() {
-		$this->Check->recursive = 0;
-        $checks = $this->Check->find('all');
-		$this->set(compact('checks'));
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Check->exists($id)) {
-			throw new NotFoundException(__('Invalid check'));
+	public function proa($id = null) {
+		if (!$this->Check->Proa->exists($id)) {
+			throw new NotFoundException(__('Invalid proa'));
 		}
-		$options = array('conditions' => array($this->Check->alias . '.' . $this->Check->primaryKey => $id));
-         $check = $this->Check->find('first', $options);
-		$this->set(compact('check'));
+		$this->Check->recursive = 0;
+		$options = array(
+			'conditions' => array(
+				'proa_id' => $id,
+			),
+		);
+        $checks = $this->Check->find('all', $options);
+		$this->set(compact('checks'));
 	}
 
 /**
@@ -49,18 +31,26 @@ class ChecksController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($id = null) {
+		if (!$this->Check->Proa->exists($id)) {
+			throw new NotFoundException(__('Invalid proa'));
+		}
 		if ($this->request->is('post')) {
+			$this->request->data[$this->Check->alias]['proa_id'] = $id;
 			$this->Check->create();
 			if ($this->Check->save($this->request->data)) {
 				$this->Flash->success(__('The check has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'proa', $id));
 			} else {
 				$this->Flash->error(__('The check could not be saved. Please, try again.'));
 			}
 		}
 		$proas = $this->Check->Proa->find('list');
-        $fields = array();
+        $fields = array(
+			'date',
+			'value',
+			'number',
+		);
         $blacklist = array();
         $this->set(compact('fields', 'blacklist', 'proas'));
 	}
@@ -79,7 +69,7 @@ class ChecksController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Check->save($this->request->data)) {
 				$this->Flash->success(__('The check has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'proa', $this->Check->field('proa_id')));
 			} else {
 				$this->Flash->error(__('The check could not be saved. Please, try again.'));
 			}
@@ -88,7 +78,12 @@ class ChecksController extends AppController {
 			$this->request->data = $this->Check->find('first', $options);
 		}
 		$proas = $this->Check->Proa->find('list');
-        $fields = array();
+        $fields = array(
+			'id',
+			'date',
+			'value',
+			'number',
+		);
         $blacklist = array();
         $this->set(compact('fields', 'blacklist', 'proas'));
 	}
@@ -105,12 +100,13 @@ class ChecksController extends AppController {
 		if (!$this->Check->exists()) {
 			throw new NotFoundException(__('Invalid check'));
 		}
+		$proaId = $this->Check->field('proa_id');
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Check->delete()) {
 			$this->Flash->success(__('The check has been deleted.'));
 		} else {
 			$this->Flash->error(__('The check could not be deleted. Please, try again.'));
 		}
-		return $this->redirect(array('action' => 'index'));
+		return $this->redirect(array('action' => 'proa', $proaId));
 	}
 }

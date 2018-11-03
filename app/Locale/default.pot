@@ -1,0 +1,449 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/AppController.php:67
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: Controller/AppController.php:105
+msgid "Cash Advance"
+msgstr ""
+
+#: Controller/AppController.php:106
+msgid "Default"
+msgstr ""
+
+#: Controller/AppController.php:107
+msgid "Administrator"
+msgstr ""
+
+#: Controller/AppController.php:108
+msgid "Confirm Password"
+msgstr ""
+
+#: Controller/AppController.php:109
+msgid "Current Password"
+msgstr ""
+
+#: Controller/ChecksController.php:17;36
+#: Controller/ProasController.php:62;103
+msgid "Invalid proa"
+msgstr ""
+
+#: Controller/ChecksController.php:42;71
+msgid "The check has been saved."
+msgstr ""
+
+#: Controller/ChecksController.php:45;74
+msgid "The check could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ChecksController.php:67;101
+msgid "Invalid check"
+msgstr ""
+
+#: Controller/ChecksController.php:106
+msgid "The check has been deleted."
+msgstr ""
+
+#: Controller/ChecksController.php:108
+msgid "The check could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/ProasController.php:31;66
+msgid "The proa has been saved."
+msgstr ""
+
+#: Controller/ProasController.php:34;69
+msgid "The proa could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/ProasController.php:106
+msgid "The proa could not be deleted because it has linked checks."
+msgstr ""
+
+#: Controller/ProasController.php:110
+msgid "The proa has been deleted."
+msgstr ""
+
+#: Controller/ProasController.php:112
+msgid "The proa could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/RubricsController.php:31;58
+msgid "The rubric has been saved."
+msgstr ""
+
+#: Controller/RubricsController.php:34;61
+msgid "The rubric could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/RubricsController.php:54;86
+msgid "Invalid rubric"
+msgstr ""
+
+#: Controller/RubricsController.php:89
+msgid "The rubric could not be deleted because it has linked proas."
+msgstr ""
+
+#: Controller/RubricsController.php:93
+msgid "The rubric has been deleted."
+msgstr ""
+
+#: Controller/RubricsController.php:95
+msgid "The rubric could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:31;62;94;124
+msgid "The user has been saved."
+msgstr ""
+
+#: Controller/UsersController.php:34;65;97;127
+msgid "The user could not be saved. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:58;120;149
+msgid "Invalid user"
+msgstr ""
+
+#: Controller/UsersController.php:104
+msgid "New Password"
+msgstr ""
+
+#: Controller/UsersController.php:152
+msgid "The user could not be deleted because it has linked proas."
+msgstr ""
+
+#: Controller/UsersController.php:156
+msgid "The user has been deleted."
+msgstr ""
+
+#: Controller/UsersController.php:158
+msgid "The user could not be deleted. Please, try again."
+msgstr ""
+
+#: Controller/UsersController.php:169
+msgid "Username or password invalid"
+msgstr ""
+
+#: Controller/UsersController.php:173
+#: View/Users/index.ctp:12;21
+msgid "Email"
+msgstr ""
+
+#: Controller/UsersController.php:174
+msgid "Password"
+msgstr ""
+
+#: Controller/UsersController.php:175
+msgid "Remember me"
+msgstr ""
+
+#: Controller/UsersController.php:182
+msgid "Good-bye!"
+msgstr ""
+
+#: Model/AppModel.php:280
+msgid "E-mail successfully sent."
+msgstr ""
+
+#: View/Checks/add.ctp:4
+#: View/Checks/proa.ctp:51
+msgid "New Check"
+msgstr ""
+
+#: View/Checks/add.ctp:24
+#: View/Checks/edit.ctp:24
+#: View/Proas/add.ctp:24
+#: View/Proas/edit.ctp:24
+#: View/Rubrics/add.ctp:27
+#: View/Rubrics/edit.ctp:27
+#: View/Users/add.ctp:24
+#: View/Users/edit.ctp:24
+#: View/Users/reset_password.ctp:26
+#: View/Users/update_password.ctp:26
+msgid "Submit"
+msgstr ""
+
+#: View/Checks/add.ctp:25
+#: View/Checks/edit.ctp:24
+#: View/Proas/add.ctp:24
+#: View/Proas/edit.ctp:24
+#: View/Rubrics/add.ctp:28
+#: View/Rubrics/edit.ctp:28
+#: View/Users/add.ctp:24
+#: View/Users/edit.ctp:24
+#: View/Users/reset_password.ctp:27
+#: View/Users/update_password.ctp:27
+msgid "Reset"
+msgstr ""
+
+#: View/Checks/add.ctp:27
+#: View/Checks/edit.ctp:24
+#: View/Proas/add.ctp:24
+#: View/Proas/edit.ctp:24
+#: View/Rubrics/add.ctp:30
+#: View/Rubrics/edit.ctp:30
+#: View/Users/add.ctp:24
+#: View/Users/edit.ctp:24
+#: View/Users/reset_password.ctp:29
+#: View/Users/update_password.ctp:29
+msgid "Cancel"
+msgstr ""
+
+#: View/Checks/edit.ctp:4
+msgid "Edit Check"
+msgstr ""
+
+#: View/Checks/proa.ctp:4
+msgid "Checks"
+msgstr ""
+
+#: View/Checks/proa.ctp:11;20
+msgid "Date"
+msgstr ""
+
+#: View/Checks/proa.ctp:12;21
+msgid "Value"
+msgstr ""
+
+#: View/Checks/proa.ctp:13;22
+#: View/Rubrics/index.ctp:12;20
+msgid "Number"
+msgstr ""
+
+#: View/Checks/proa.ctp:14;23
+#: View/Proas/index.ctp:21;37
+#: View/Rubrics/index.ctp:14;22
+#: View/Users/index.ctp:14;23
+msgid "Actions"
+msgstr ""
+
+#: View/Checks/proa.ctp:34
+#: View/Proas/index.ctp:75
+#: View/Rubrics/index.ctp:32
+#: View/Users/index.ctp:35
+msgid "Edit"
+msgstr ""
+
+#: View/Checks/proa.ctp:35
+#: View/Proas/index.ctp:76
+#: View/Rubrics/index.ctp:33
+#: View/Users/index.ctp:36
+msgid "Delete"
+msgstr ""
+
+#: View/Checks/proa.ctp:35
+#: View/Rubrics/index.ctp:33
+#: View/Users/index.ctp:36
+msgid "Are you sure you want to delete \"%s\"?"
+msgstr ""
+
+#: View/Layouts/default.ctp:48
+msgid "Cash advance"
+msgstr ""
+
+#: View/Layouts/default.ctp:55
+#: View/Proas/index.ctp:4
+msgid "Proas"
+msgstr ""
+
+#: View/Layouts/default.ctp:58
+#: View/Rubrics/index.ctp:4
+msgid "Rubrics"
+msgstr ""
+
+#: View/Layouts/default.ctp:61
+#: View/Users/index.ctp:4
+msgid "Users"
+msgstr ""
+
+#: View/Layouts/default.ctp:64
+#: View/Users/index.ctp:34
+#: View/Users/update_password.ctp:4
+msgid "Update Password"
+msgstr ""
+
+#: View/Layouts/default.ctp:69
+msgid "Logout"
+msgstr ""
+
+#: View/Layouts/default.ctp:88
+msgid "Development by RMA3 &copy; 2018"
+msgstr ""
+
+#: View/Proas/add.ctp:4
+#: View/Proas/index.ctp:100
+msgid "New Proa"
+msgstr ""
+
+#: View/Proas/edit.ctp:4
+msgid "Edit Proa"
+msgstr ""
+
+#: View/Proas/index.ctp:11;27
+msgid "User"
+msgstr ""
+
+#: View/Proas/index.ctp:12;28
+msgid "Proa"
+msgstr ""
+
+#: View/Proas/index.ctp:13;29
+msgid "Proa Pct"
+msgstr ""
+
+#: View/Proas/index.ctp:14;30
+msgid "Rubric"
+msgstr ""
+
+#: View/Proas/index.ctp:15;31
+msgid "Total Value"
+msgstr ""
+
+#: View/Proas/index.ctp:16;32
+msgid "Used Value"
+msgstr ""
+
+#: View/Proas/index.ctp:17;33
+msgid "Remaining Value"
+msgstr ""
+
+#: View/Proas/index.ctp:18;34
+msgid "Start Date"
+msgstr ""
+
+#: View/Proas/index.ctp:19;35
+msgid "End Date"
+msgstr ""
+
+#: View/Proas/index.ctp:20;36
+msgid "Pct Date"
+msgstr ""
+
+#: View/Proas/index.ctp:74
+msgid "View"
+msgstr ""
+
+#: View/Proas/index.ctp:76
+msgid "Are you sure you want to delete proa %s?"
+msgstr ""
+
+#: View/Proas/index.ctp:90
+msgid "Total Value: %s R$ %s"
+msgstr ""
+
+#: View/Proas/index.ctp:91
+msgid "Total Used Value: %s R$ %s"
+msgstr ""
+
+#: View/Proas/index.ctp:92
+msgid "Total Remaining Value: %s R$ %s"
+msgstr ""
+
+#: View/Rubrics/add.ctp:4
+#: View/Rubrics/index.ctp:49
+msgid "New Rubric"
+msgstr ""
+
+#: View/Rubrics/edit.ctp:4
+msgid "Edit Rubric"
+msgstr ""
+
+#: View/Rubrics/index.ctp:13;21
+msgid "Description"
+msgstr ""
+
+#: View/Users/add.ctp:4
+#: View/Users/index.ctp:52
+msgid "New User"
+msgstr ""
+
+#: View/Users/edit.ctp:4
+msgid "Edit User"
+msgstr ""
+
+#: View/Users/index.ctp:11;20
+msgid "Name"
+msgstr ""
+
+#: View/Users/index.ctp:13;22
+msgid "Role"
+msgstr ""
+
+#: View/Users/login.ctp:20
+msgid "Sign in"
+msgstr ""
+
+#: View/Users/reset_password.ctp:4
+msgid "Reset Password - %s"
+msgstr ""
+
+#: Model/Check.php:validation for field date
+#: Model/Proa.php:validation for field start_date;validation for field end_date;validation for field pct_date
+msgid "date"
+msgstr ""
+
+#: Model/Check.php:validation for field value
+#: Model/Proa.php:validation for field total_value;validation for field value_used;validation for field remaining_value
+msgid "decimal"
+msgstr ""
+
+#: Model/Check.php:validation for field number
+#: Model/Proa.php:validation for field proa
+#: Model/Rubric.php:validation for field description
+msgid "notBlank"
+msgstr ""
+
+#: Model/Rubric.php:validation for field number
+msgid "numeric"
+msgstr ""
+
+#: Model/Rubric.php:validation for field number
+msgid "isUnique"
+msgstr ""
+
+#: Model/User.php:validation for field name
+msgid "This field can not be empty"
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "Invalid email"
+msgstr ""
+
+#: Model/User.php:validation for field email
+msgid "This email is already in use"
+msgstr ""
+
+#: Model/User.php:validation for field current_password
+msgid "Wrong password"
+msgstr ""
+
+#: Model/User.php:validation for field password
+msgid "Password and password confirmation are not the same"
+msgstr ""
+
+#: Model/User.php:validation for field password;validation for field confirm_password
+msgid "At least %d characters"
+msgstr ""
+
+#: Model/User.php:validation for field enabled
+msgid "Invalid option"
+msgstr ""
+
+#: Model/User.php:validation for field role
+msgid "Invalid role"
+msgstr ""
+

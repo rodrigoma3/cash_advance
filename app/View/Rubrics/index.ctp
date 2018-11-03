@@ -9,30 +9,16 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th><?php echo __('Code'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
+					<th><?php echo __('Number'); ?></th>
+					<th><?php echo __('Description'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th></th>
-					<th><?php echo __('Code'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
-					<th><?php echo __('Name'); ?></th>
+					<th><?php echo __('Number'); ?></th>
+					<th><?php echo __('Description'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</tfoot>
@@ -40,18 +26,11 @@
 				<?php foreach ($rubrics as $rubric): ?>
 					<tr>
 						<td>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['id']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
-						<td><?php echo h($rubric['Rubric']['name']); ?>&nbsp;</td>
+						<td><?php echo h($rubric['Rubric']['number']); ?>&nbsp;</td>
+						<td><?php echo h($rubric['Rubric']['description']); ?>&nbsp;</td>
 						<td class="actions action-buttons">
 							<?php echo $this->Html->link('<i class="fas fa-lg fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $rubric['Rubric']['id']), array('escape' => false, 'title' => __('Edit'))); ?>
-							<?php echo $this->Form->postLink('<i class="fas fa-lg fa-trash text-danger"></i>&nbsp;', array('action' => 'delete', $rubric['Rubric']['id']), array('escape' => false, 'title' => __('Delete'), 'confirm' => __('Are you sure you want to delete # %s?', $rubric['Rubric']['id']))); ?>
+							<?php echo $this->Form->postLink('<i class="fas fa-lg fa-trash text-danger"></i>&nbsp;', array('action' => 'delete', $rubric['Rubric']['id']), array('escape' => false, 'title' => __('Delete'), 'confirm' => __('Are you sure you want to delete "%s"?', $rubric['Rubric']['number']))); ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>

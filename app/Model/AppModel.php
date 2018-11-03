@@ -20,6 +20,8 @@
  */
 
 App::uses('Model', 'Model');
+App::uses('CakeEmail', 'Network/Email');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 /**
  * Application model for Cake.
@@ -30,4 +32,291 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+    public $perms = array(
+        'users' => array(
+            'index' => array('admin'),
+            'add' => array('admin'),
+            'edit' => array('admin'),
+            'delete' => array('admin'),
+            'updatePassword' => array('admin'),
+            'resetPassword' => array('admin'),
+            'login' => array('semAutenticacao'),
+            'logout' => array('semAutenticacao'),
+        ),
+        'rubrics' => array(
+            'index' => array('admin'),
+            'add' => array('admin'),
+            'edit' => array('admin'),
+            'delete' => array('admin'),
+        ),
+        'proas' => array(
+            'index' => array('admin'),
+            'add' => array('admin'),
+            'edit' => array('admin'),
+            'delete' => array('admin'),
+        ),
+        'checks' => array(
+            'proa' => array('admin'),
+            'add' => array('admin'),
+            'edit' => array('admin'),
+            'delete' => array('admin'),
+        ),
+    );
+
+    public function emailsValid($check) {
+        $emailsIsValid=false;
+        $emails = array();
+        $fname = '';
+        foreach ($check as $key => $value) {
+            $fname = $key;
+            $value = str_replace(' ', '', $value);
+            $emails = preg_split('/[;]/i', $value,-1, PREG_SPLIT_NO_EMPTY);
+        }
+        foreach ($emails as $email) {
+            if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailsIsValid=true;
+            } else {
+                $emailsIsValid=false;
+                break;
+            }
+        }
+        if ($emailsIsValid) {
+            $this->data[$this->alias][$fname] = implode(';', $emails);
+        }
+        return $emailsIsValid;
+    }
+
+    public function comparisonConditional($check, $otherfield, $comparator, $valueCompare) {
+		switch ($comparator) {
+			case 'is greater':
+			case '>':
+			$comparator = '>';
+			break;
+
+			case 'is less':
+			case '<':
+			$comparator = '<';
+			break;
+
+			case 'greater or equal':
+			case '>=':
+			$comparator = '>=';
+			break;
+
+			case 'less or equal':
+			case '<=':
+			$comparator = '<=';
+			break;
+
+			case 'equal to':
+			case '==':
+			$comparator = '==';
+			break;
+
+			case 'not equal':
+			case '!=':
+			$comparator = '!=';
+			break;
+
+			default:
+			return false;
+			break;
+		}
+		$fname = '';
+		foreach ($check as $key => $value){
+			$fname = $key;
+			break;
+		}
+		if ($this->data[$this->alias][$otherfield].$comparator.$valueCompare) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+    public function token() {
+		return Security::hash(uniqid(rand(), true));
+	}
+
+    public function getEnums($options = null) {
+		$r = array();
+        if (isset($this->enum)) {
+            if (is_null($options)) {
+                foreach ($this->enum as $field => $value) {
+                    $r[$field] = $this->__translate($value);
+                }
+            } elseif (is_array($options)) {
+                foreach ($options as $option) {
+                    if (array_key_exists($option, $this->enum)) {
+                        $r[$option] = $this->__translate($this->enum[$option]);
+                    }
+                }
+            } elseif (array_key_exists($options, $this->enum)) {
+                $r = $this->__translate($this->enum[$options]);
+            }
+        }
+		return $r;
+	}
+
+	private function __translate($values = array()){
+		$return = array();
+		foreach($values as $key => $value){
+			$return[$key] = __($value);
+		}
+		return $return;
+	}
+
+    public function afterFind($results, $primary = false) {
+        foreach ($results as $key => $val) {
+	        if (!is_null($val)) {
+				if ($key === 'prev' || $key === 'next') {
+					if (isset($val[$this->alias])) {
+						foreach (array_keys($this->getEnums()) as $field) {
+							if (isset($val[$this->alias][$field])) {
+								$results[$key][Inflector::camelize($field)]['id'] = $val[$this->alias][$field];
+								$results[$key][Inflector::camelize($field)]['name'] = __($this->getEnums($field)[$val[$this->alias][$field]]);
+							}
+						}
+					}
+				} elseif ($key === $this->alias) {
+					foreach (array_keys($this->getEnums()) as $field) {
+						if (isset($val[$field])) {
+							$results[Inflector::camelize($field)]['id'] = $val[$field];
+							$results[Inflector::camelize($field)]['name'] = __($this->getEnums($field)[$val[$field]]);
+						}
+					}
+				} elseif (array_key_exists($this->alias, $val)) {
+					foreach (array_keys($this->getEnums()) as $field) {
+						if (isset($val[$this->alias][$field])) {
+							$results[$key][Inflector::camelize($field)]['id'] = $val[$this->alias][$field];
+							$results[$key][Inflector::camelize($field)]['name'] = __($this->getEnums($field)[$val[$this->alias][$field]]);
+						}
+					}
+				}
+				if (array_key_exists('children', $val)) {
+					foreach ($val['children'] as $c => $child) {
+						if (array_key_exists($this->alias, $child)) {
+							foreach (array_keys($this->getEnums()) as $field) {
+								if (isset($child[$this->alias][$field])) {
+									$results[$key]['children'][$c][Inflector::camelize($field)]['id'] = $child[$this->alias][$field];
+									$results[$key]['children'][$c][Inflector::camelize($field)]['name'] = __($this->getEnums($field)[$child[$this->alias][$field]]);
+								}
+							}
+						}
+					}
+				}
+			}
+	    }
+
+		return $results;
+	}
+
+    public function sendMail($options = array()){
+        $result = array(
+            'error' => 1,
+            'message' => '',
+        );
+        try {
+            $parameter = Configure::read('AppProperties.Email');
+            $Email = new CakeEmail();
+            $configEmail = array(
+                    'host' => $parameter['email_ssl'].$parameter['email_host'],
+                    'port' => $parameter['email_port'],
+                    'timeout' => $parameter['email_timeout'],
+                    'username' => $parameter['email_username'],
+                    'password' => Security::decrypt($parameter['email_password'], Configure::read('Security.cipherSeed')),
+                    'transport' => 'Smtp',
+                    'charset' => 'utf-8',
+                    'headerCharset' => 'utf-8',
+                    'from' => array($parameter['email_from_email'] => $parameter['email_from_name']),
+                    'tls' => $parameter['email_tls'],
+                    'to' => $options['to'],
+                    'emailFormat' => 'html',
+                    'template' => $options['template'],
+                    'viewVars' => $options,
+                    'subject' => $options['subject'],
+                );
+            if (!isset($options['cc'])) {
+                  $options['cc'] = array();
+            }
+            if (!isset($options['bcc'])) {
+                  $options['bcc'] = array();
+            }
+            if (!isset($options['reply_to'])) {
+                  $options['reply_to'] = array();
+            }
+            if (!is_array($options['cc'])) {
+                  $options['cc'] = array($options['cc']);
+            }
+            if (!is_array($options['bcc'])) {
+                  $options['bcc'] = array($options['bcc']);
+            }
+            if (!is_array($options['reply_to'])) {
+                  $options['reply_to'] = array($options['reply_to']);
+            }
+            if (!empty($parameter['email_cc'])) {
+                  $replyTo = explode(';',$parameter['email_cc']);
+                  $options['cc'] = array_merge($options['cc'], $replyTo);
+            }
+            if (!empty($parameter['email_bcc'])) {
+                  $replyTo = explode(';',$parameter['email_bcc']);
+                  $options['bcc'] = array_merge($options['bcc'], $replyTo);
+            }
+            if (!empty($options['cc'])) {
+                  $Email->cc($options['cc']);
+            }
+            if (!empty($options['bcc'])) {
+                  $Email->bcc($options['bcc']);
+            }
+            if (isset($options['reply_to']) && !empty($options['reply_to'])) {
+                  $Email->replyTo($options['reply_to']);
+            } elseif (isset($parameter['email_reply_to']) && !empty($parameter['email_reply_to'])) {
+                $Email->replyTo($parameter['email_reply_to']);
+            }
+            $Email->config($configEmail);
+            $Email->send();
+            $result['error'] = 0;
+            $result['error'] = __('E-mail successfully sent.');
+        } catch (Exception $e) {
+            CakeLog::write('error', 'Email Exception Message: '.$e->getMessage());
+            CakeLog::write('error', 'Email Exception Trace: '.$e->getTraceAsString());
+            $result['message'] = $e->getMessage();
+        } finally {
+            return $result;
+        }
+    }
+
+    public function listKeyValueInValue($array = array(), $union = ' - ') {
+        foreach ($array as $key => $value) {
+            $array[$key] = $key . $union . $value;
+        }
+        return $array;
+    }
+
+    public function equalToField($check,$otherfield) {
+		$fname = '';
+		foreach ($check as $key => $value){
+			$fname = $key;
+			break;
+		}
+		if ($this->data[$this->alias][$otherfield] === $this->data[$this->alias][$fname]) {
+			return true;
+		} else {
+			$this->invalidate($otherfield, null);
+			return false;
+		}
+
+	}
+
+	public function confirmCurrentPassword($check) {
+		$c = array_shift($check);
+		$currentPassword = $this->field('password');
+		$newHash = Security::hash($c, 'blowfish', $currentPassword);
+		if($newHash === $currentPassword){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

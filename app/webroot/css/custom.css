@@ -8,7 +8,7 @@
 }
 
 form .required label::after {
-    content: ' *';
+    content: '  *';
     color: red;
     display: inline;
 }

@@ -12,7 +12,7 @@ class Rubric extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'name';
+	public $displayField = 'description';
 
 /**
  * Validation rules
@@ -20,7 +20,7 @@ class Rubric extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'id' => array(
+		'number' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
@@ -29,8 +29,16 @@ class Rubric extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'isUnique' => array(
+				'rule' => array('isUnique'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
-		'name' => array(
+		'description' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',

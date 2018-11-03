@@ -35,8 +35,8 @@ class RubricsController extends AppController {
 			}
 		}
 		$fields = array(
-			'id' => array('type' => 'number'),
-			'name' => array(),
+			'number' => array('type' => 'number'),
+			'description',
 		);
 		$blacklist = array();
 		$this->set(compact('fields', 'blacklist'));
@@ -65,8 +65,9 @@ class RubricsController extends AppController {
 			$this->request->data = $this->Rubric->find('first', $options);
 		}
 		$fields = array(
-			'id' => array('type' => 'number'),
-			'name' => array(),
+			'id',
+			'number',
+			'description',
 		);
 		$blacklist = array();
 		$this->set(compact('fields', 'blacklist'));
@@ -84,11 +85,15 @@ class RubricsController extends AppController {
 		if (!$this->Rubric->exists()) {
 			throw new NotFoundException(__('Invalid rubric'));
 		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Rubric->delete()) {
-			$this->Flash->success(__('The rubric has been deleted.'));
+		if (!empty($this->Rubric->read()[$this->Rubric->Proa->alias])) {
+			$this->Flash->error(__('The rubric could not be deleted because it has linked proas.'));
 		} else {
-			$this->Flash->error(__('The rubric could not be deleted. Please, try again.'));
+			$this->request->allowMethod('post', 'delete');
+			if ($this->Rubric->delete()) {
+				$this->Flash->success(__('The rubric has been deleted.'));
+			} else {
+				$this->Flash->error(__('The rubric could not be deleted. Please, try again.'));
+			}
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
