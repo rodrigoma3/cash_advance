@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<h2 class="page-header">
-			<?php echo __('Reset Password'); ?>
+			<?php echo __('Register Password'); ?>
 		</h2>
 		<hr>
 

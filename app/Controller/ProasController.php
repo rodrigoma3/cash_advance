@@ -34,15 +34,15 @@ class ProasController extends AppController {
 				$this->Flash->error(__('The proa could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Proa->User->find('list');
+		$users = $this->Proa->User->find('list', array('conditions' => array('enabled' => 1), 'order' => array('name')));
 		$rubrics = $this->Proa->Rubric->find('all', array('fields' => array('id', 'number', 'description')));
 		$rubrics = Hash::combine($rubrics, '{n}.Rubric.id', array('%s - %s', '{n}.Rubric.number', '{n}.Rubric.description'));
         $fields = array(
 			'proa',
 			'total_value',
-			'start_date' => array('value' => date('Y-m-d')),
-			'end_date' => array('value' => date('Y-m-d', strtotime('+ 30 days'))),
-			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 60 days'))),
+			'start_date' => array('value' => date('Y-m-d'), 'dateFormat' => 'D-M-Y'),
+			'end_date' => array('value' => date('Y-m-d', strtotime('+ 30 days')), 'dateFormat' => 'D-M-Y'),
+			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 60 days')), 'dateFormat' => 'D-M-Y'),
 			'user_id',
 			'rubric_id',
 		);

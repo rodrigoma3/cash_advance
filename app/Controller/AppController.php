@@ -66,9 +66,13 @@ class AppController extends Controller {
             $this->Auth->unauthorizedRedirect = $this->referer();
             $this->Auth->authError = __('You are not authorized to access that location.');
             $this->Auth->flash['element'] = 'error';
-            $this->set('perms', $this->{$this->modelClass}->perms);
+            // $this->set('perms', $this->{$this->modelClass}->perms);
         } else {
             $this->Auth->authError = false;
+        }
+
+        if ($this->Session->read('perms') == null) {
+            $this->Session->write('perms', $this->{$this->modelClass}->perms);
         }
 
         if ($this->isAuthorized()) {
@@ -91,14 +95,6 @@ class AppController extends Controller {
         $controller = __(Inflector::humanize(Inflector::underscore($this->params['controller'])));
         $action = ($this->params['action'] !== 'index')?' | '.__(Inflector::humanize(Inflector::underscore($this->params['action']))):'';
         $this->set('title_for_layout', $controller.$action);
-    }
-
-    protected function encrypt($string = null) {
-        return base64_encode(Security::encrypt($string, Configure::read('Security.salt')));
-    }
-
-    protected function decrypt($string = null) {
-        return Security::decrypt(base64_decode($string), Configure::read('Security.salt'));
     }
 
     private function translateText() {

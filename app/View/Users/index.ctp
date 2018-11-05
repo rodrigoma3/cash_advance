@@ -31,7 +31,7 @@
 		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td><?php echo h($roles[$user['User']['role']]); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link('<i class="fas fa-key text-info"></i>&nbsp;', array('action' => 'resetPassword', $user['User']['id']), array('escape' => false, 'title' => __('Update Password'))); ?>
+			<?php echo $this->Html->link('<i class="fas fa-key text-info"></i>&nbsp;', array('action' => 'resetPassword', $user['User']['id']), array('escape' => false, 'title' => __('Reset Password'))); ?>
 			<?php echo $this->Html->link('<i class="fas fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $user['User']['id']), array('escape' => false, 'title' => __('Edit'))); ?>
 			<?php echo $this->Form->postLink('<i class="fas fa-trash text-danger"></i>&nbsp;', array('action' => 'delete', $user['User']['id']), array('escape' => false, 'title' => __('Delete'), 'confirm' => __('Are you sure you want to delete "%s"?', $user['User']['email']))); ?>
 		</td>

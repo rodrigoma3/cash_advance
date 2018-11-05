@@ -43,6 +43,8 @@ class AppModel extends Model {
             'resetPassword' => array('admin'),
             'login' => array('semAutenticacao'),
             'logout' => array('semAutenticacao'),
+            'registerPassword' => array('semAutenticacao'),
+            'forgotPassword' => array('semAutenticacao'),
         ),
         'rubrics' => array(
             'index' => array('admin'),
@@ -61,6 +63,10 @@ class AppModel extends Model {
             'add' => array('admin'),
             'edit' => array('admin'),
             'delete' => array('admin'),
+        ),
+        'appProperties' => array(
+            'index' => array('admin'),
+            'email' => array('admin'),
         ),
     );
 
@@ -215,17 +221,17 @@ class AppModel extends Model {
     public function sendMail($options = array()){
         $result = array(
             'error' => 1,
-            'message' => '',
+            'message' => 'Internal Error',
         );
         try {
-            $parameter = Configure::read('AppProperties.Email');
+            $parameter = Configure::read('AppProperties');
             $Email = new CakeEmail();
             $configEmail = array(
                     'host' => $parameter['email_ssl'].$parameter['email_host'],
                     'port' => $parameter['email_port'],
                     'timeout' => $parameter['email_timeout'],
                     'username' => $parameter['email_username'],
-                    'password' => Security::decrypt($parameter['email_password'], Configure::read('Security.cipherSeed')),
+                    'password' => $this->decrypt($parameter['email_password']),
                     'transport' => 'Smtp',
                     'charset' => 'utf-8',
                     'headerCharset' => 'utf-8',
@@ -277,10 +283,12 @@ class AppModel extends Model {
             $Email->config($configEmail);
             $Email->send();
             $result['error'] = 0;
-            $result['error'] = __('E-mail successfully sent.');
+            $result['message'] = __('Email sent successfully!');
         } catch (Exception $e) {
-            CakeLog::write('error', 'Email Exception Message: '.$e->getMessage());
-            CakeLog::write('error', 'Email Exception Trace: '.$e->getTraceAsString());
+            if (Configure::read('debug')) {
+                CakeLog::write('error', 'Email Exception Message: '.$e->getMessage());
+                CakeLog::write('error', 'Email Exception Trace: '.$e->getTraceAsString());
+            }
             $result['message'] = $e->getMessage();
         } finally {
             return $result;
@@ -319,4 +327,12 @@ class AppModel extends Model {
 			return false;
 		}
 	}
+
+    public function encrypt($string = null) {
+        return base64_encode(Security::encrypt($string, Configure::read('Security.salt')));
+    }
+
+    public function decrypt($string = null) {
+        return Security::decrypt(base64_decode($string), Configure::read('Security.salt'));
+    }
 }

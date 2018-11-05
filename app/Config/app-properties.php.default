@@ -1,0 +1,22 @@
+<?php
+$config = array (
+    'AppProperties' =>
+        array (
+            'email_send_mail' => '1',
+            'email_host' => 'smtp.email.com.br',
+            'email_port' => '587',
+            'email_tls' => '0',
+            'email_ssl' => '',
+            'email_timeout' => '30',
+            'email_username' => 'admin@email.com.br',
+            'email_password' => 'MGNmMDVkYWQxNTFjYmE3OTZjMDY5Njc4Yjk4NDJhYjIxNjM4MWZlMzc0YmZhY2EzZmE2NGI2NzE2OTFkMTBhML1jyjU7zAZFmUjVFQlgRtAbIqNVa1LnW+gdZD6Q+icp',
+            'email_from_name' => 'Adiantamento Numerario',
+            'email_from_email' => 'admin@email.com.br',
+            'email_reply_to' => 'admin@email.com.br',
+            'email_cc' => '',
+            'email_bcc' => '',
+            'app_name' => 'Cash Advance',
+            'token_expiration_time' => '72',
+            'administrator_email' => 'admin@email.com',
+        ),
+);
