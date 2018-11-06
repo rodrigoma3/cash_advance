@@ -10,7 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -94,7 +94,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `enabled`, `token`, `token_expiration`) VALUES
-(1, 'Admin', 'admin@email.com', '$2a$10$NJmJOsRmcgUqZeab6GlUgOaVc6hHNvIbD2CykEIn0WtjADebSQe7W', 'admin', 1, NULL, NULL),
+(1, 'Admin', 'admin@email.com', '$2a$10$NJmJOsRmcgUqZeab6GlUgOaVc6hHNvIbD2CykEIn0WtjADebSQe7W', 'admin', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
