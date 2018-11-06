@@ -18,9 +18,10 @@
 <?php echo $this->Form->inputs($fields, $blacklist, array('legend' => false, 'fieldset' => false)); ?>
 
 <?php echo $this->Form->button(__('Sign in'), array('type' => 'submit', 'class' => 'btn btn-lg btn-primary btn-block', 'div' => false)); ?>
-
-<br>
-<p><?php echo $this->Html->link(__('Forgot password? click here'), array('action' => 'forgotPassword')) ?></p>
+<?php if (Configure::read('AppProperties.email_send_mail')): ?>
+    <br>
+    <p><?php echo $this->Html->link(__('Forgot password? click here'), array('action' => 'forgotPassword')) ?></p>
+<?php endif; ?>
 
 <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
 

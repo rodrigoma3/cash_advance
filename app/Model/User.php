@@ -18,6 +18,10 @@ class User extends AppModel {
 			'default' => 'Default',
 			'admin' => 'Administrator',
 		),
+		'enabled' => array(
+			'0' => 'No',
+			'1' => 'Yes',
+		),
 	);
 
 	public function beforeSave($options = array()) {

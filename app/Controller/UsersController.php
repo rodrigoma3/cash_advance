@@ -139,7 +139,8 @@ class UsersController extends AppController {
  * @return void
  */
 	public function resetPassword($id = null) {
-		if (!$this->User->exists($id)) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
@@ -229,6 +230,9 @@ class UsersController extends AppController {
 	}
 
 	public function registerPassword($token = null) {
+		if (!Configure::read('AppProperties.email_send_mail')) {
+			throw new NotFoundException();
+		}
 		if (is_null($token)) {
 			throw new NotFoundException(__('Invalid token'));
 		}
@@ -267,6 +271,9 @@ class UsersController extends AppController {
 	}
 
 	public function forgotPassword() {
+		if (!Configure::read('AppProperties.email_send_mail')) {
+			throw new NotFoundException();
+		}
 		if ($this->request->is('post')) {
 			if (empty($this->request->data[$this->User->alias]['email'])) {
 				$this->Flash->error(__('Email could not be empty.'));

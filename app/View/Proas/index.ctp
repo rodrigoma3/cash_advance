@@ -55,14 +55,22 @@
 					<tr>
 						<td>&nbsp;</td>
 						<td>
-							<?php echo $this->Html->link($proa['User']['name'], array('controller' => 'users', 'action' => 'edit', $proa['User']['id'])); ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['users']['edit']) || in_array('semAutenticacao', $this->Session->read('perms')['users']['edit'])): ?>
+								<?php echo $this->Html->link($proa['User']['name'], array('controller' => 'users', 'action' => 'edit', $proa['User']['id'])); ?>
+							<?php else: ?>
+								<?php echo h($proa['User']['name']); ?>
+							<?php endif; ?>
 						</td>
 						<td>
-							<?php echo $this->Html->link($proa['Proa']['proa'], array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id'])); ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['proa']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['proa'])): ?>
+								<?php echo $this->Html->link($proa['Proa']['proa'], array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id'])); ?>
+							<?php else: ?>
+								<?php echo h($proa['Proa']['proa']); ?>
+							<?php endif; ?>
 						</td>
 						<td><?php echo h($proa['Proa']['proa_pct']); ?>&nbsp;</td>
 						<td>
-							<?php echo $this->Html->link($proa['Rubric']['number'] . ' - ' . $proa['Rubric']['description'], array('controller' => 'rubrics', 'action' => 'edit', $proa['Rubric']['id'])); ?>
+							<?php echo h($proa['Rubric']['number'] . ' - ' . $proa['Rubric']['description']); ?>
 						</td>
 						<td><?php echo h($proa['Proa']['total_value']); ?>&nbsp;</td>
 						<td><?php echo h($usedValue); ?>&nbsp;</td>
@@ -71,9 +79,15 @@
 						<td><?php echo h($proa['Proa']['end_date']); ?>&nbsp;</td>
 						<td><?php echo h($proa['Proa']['pct_date']); ?>&nbsp;</td>
 						<td class="actions">
-							<?php echo $this->Html->link('<i class="fas fa-eye text-success"></i>&nbsp;', array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id']), array('escape' => false, 'title' => __('View'))); ?>
-							<?php echo $this->Html->link('<i class="fas fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $proa['Proa']['id']), array('escape' => false, 'title' => __('Edit'))); ?>
-							<?php echo $this->Form->postLink('<i class="fas fa-trash text-danger"></i>&nbsp;', array('action' => 'delete', $proa['Proa']['id']), array('escape' => false, 'title' => __('Delete'), 'confirm' => __('Are you sure you want to delete proa %s?', $proa['Proa']['proa']))); ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['proa']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['proa'])): ?>
+								<?php echo $this->Html->link('<i class="fas fa-eye text-success"></i>&nbsp;', array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id']), array('escape' => false, 'title' => __('View'))); ?>
+							<?php endif; ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['edit']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['edit'])): ?>
+								<?php echo $this->Html->link('<i class="fas fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $proa['Proa']['id']), array('escape' => false, 'title' => __('Edit'))); ?>
+							<?php endif; ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['delete']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['delete'])): ?>
+								<?php echo $this->Form->postLink('<i class="fas fa-trash text-danger"></i>&nbsp;', array('action' => 'delete', $proa['Proa']['id']), array('escape' => false, 'title' => __('Delete'), 'confirm' => __('Are you sure you want to delete proa %s?', $proa['Proa']['proa']))); ?>
+							<?php endif; ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -93,11 +107,12 @@
 	</div>
 </div>
 
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="form-actions">
-			<?php echo $this->Html->link('<i class="fas fa-plus"></i>&nbsp;'.__('New Proa'), array('action' => 'add'), array('class' => 'btn btn-success', 'escape' => false)); ?>
+<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['add']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['add'])): ?>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-actions">
+				<?php echo $this->Html->link('<i class="fas fa-plus"></i>&nbsp;'.__('New Proa'), array('action' => 'add'), array('class' => 'btn btn-success', 'escape' => false)); ?>
+			</div>
 		</div>
 	</div>
-</div>
+<?php endif; ?>

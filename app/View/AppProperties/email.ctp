@@ -28,7 +28,6 @@
 			<?php echo $this->Form->button('<i class="fas fa-undo"></i>&nbsp;'.__('Reset'), array('type' => 'reset', 'class' => 'btn btn-yellow')); ?>
 			<?php echo $this->Form->end(); ?>
 			<?php echo $this->Form->button('<i class="fas fa-envelope"></i>&nbsp;'.__('Email Test'), array('type' => 'button', 'class' => 'btn btn-primary', 'div' => false, 'data-toggle' => 'modal', 'data-target' => '#testmail')); ?>
-			<?php echo $this->Html->link('<i class="fas fa-times"></i>&nbsp;'.__('Cancel'), array('action' => 'index'), array('class' => 'btn', 'escape' => false)); ?>
 		</div>
 	</div>
 </div>

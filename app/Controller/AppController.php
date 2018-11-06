@@ -51,7 +51,8 @@ class AppController extends Controller {
             'authenticate' => array(
                 'Form' => array(
                     'fields' => array('username' => 'email'),
-                    'passwordHasher' => 'Blowfish'
+                    'scope' => array('enabled' => 1),
+                    'passwordHasher' => 'Blowfish',
                 ),
             ),
             'authorize' => 'Controller',
@@ -103,6 +104,24 @@ class AppController extends Controller {
         $text = __('Administrator');
         $text = __('Confirm Password');
         $text = __('Current Password');
+        $text = __('Token Expiration Time');
+        $text = __('Administrator Email');
+        $text = __('App Name');
+        $text = __('Email Send Mail');
+        $text = __('Email Host');
+        $text = __('Email Port');
+        $text = __('Email Tls');
+        $text = __('Email Ssl');
+        $text = __('Email Timeout');
+        $text = __('Email Username');
+        $text = __('Email Password');
+        $text = __('Email From Name');
+        $text = __('Email From Email');
+        $text = __('Email Reply To');
+        $text = __('Email Cc');
+        $text = __('Email Bcc');
+        $text = __('Yes');
+        $text = __('No');
     }
 
 }

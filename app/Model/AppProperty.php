@@ -28,7 +28,7 @@ class AppProperty extends AppModel {
 		'email_send_mail' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -38,7 +38,7 @@ class AppProperty extends AppModel {
 		'email_host' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
+				'message' => 'This field can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -48,7 +48,7 @@ class AppProperty extends AppModel {
 		'email_port' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Non-numeric value',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -58,7 +58,7 @@ class AppProperty extends AppModel {
 		'email_tls' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -68,7 +68,7 @@ class AppProperty extends AppModel {
 		'email_ssl' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid option',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -78,7 +78,7 @@ class AppProperty extends AppModel {
 		'email_timeout' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
+				'message' => 'Non-numeric value',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -88,7 +88,7 @@ class AppProperty extends AppModel {
 		'email_from_name' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
+				'message' => 'This field can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -98,7 +98,7 @@ class AppProperty extends AppModel {
 		'email_from_email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid email',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -108,7 +108,7 @@ class AppProperty extends AppModel {
 		'email_reply_to' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid email',
 				'allowEmpty' => true,
 				'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -118,7 +118,7 @@ class AppProperty extends AppModel {
 		'email_cc' => array(
 			'emailsValid' => array(
 				'rule' => array('emailsValid'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid email',
 				'allowEmpty' => true,
 				'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -128,7 +128,7 @@ class AppProperty extends AppModel {
 		'email_bcc' => array(
 			'emailsValid' => array(
 				'rule' => array('emailsValid'),
-				//'message' => 'Your custom message here',
+				'message' => 'Invalid email',
 				'allowEmpty' => true,
 				'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -138,7 +138,7 @@ class AppProperty extends AppModel {
 		'app_name' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
+				'message' => 'This field can not be empty',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
