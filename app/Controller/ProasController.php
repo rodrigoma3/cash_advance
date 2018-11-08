@@ -44,8 +44,8 @@ class ProasController extends AppController {
 			'proa',
 			'total_value',
 			'start_date' => array('value' => date('Y-m-d'), 'dateFormat' => 'D-M-Y'),
-			'end_date' => array('value' => date('Y-m-d', strtotime('+ 30 days')), 'dateFormat' => 'D-M-Y'),
-			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 60 days')), 'dateFormat' => 'D-M-Y'),
+			'end_date' => array('value' => date('Y-m-d', strtotime('+ 29 days')), 'dateFormat' => 'D-M-Y'),
+			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 58 days')), 'dateFormat' => 'D-M-Y'),
 			'user_id',
 			'rubric_id',
 		);
@@ -113,6 +113,51 @@ class ProasController extends AppController {
 				$this->Flash->success(__('The proa has been deleted.'));
 			} else {
 				$this->Flash->error(__('The proa could not be deleted. Please, try again.'));
+			}
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
+
+	public function informProaPct($id = null) {
+		if (!$this->Proa->exists($id)) {
+			throw new NotFoundException(__('Invalid proa'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Proa->save($this->request->data)) {
+				$this->Flash->success(__('The proa has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Flash->error(__('The proa could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array($this->Proa->alias . '.' . $this->Proa->primaryKey => $id));
+			$this->request->data = $this->Proa->find('first', $options);
+		}
+        $fields = array(
+			'id',
+			'proa' => array('disabled' => true),
+			'proa_pct',
+		);
+        $blacklist = array();
+        $this->set(compact('fields', 'blacklist'));
+	}
+
+	public function freeze($id = null) {
+		$this->Proa->id = $id;
+		if (!$this->Proa->exists()) {
+			throw new NotFoundException(__('Invalid proa'));
+		}
+		if ($this->request->is(array('post'))) {
+			$data = array(
+				$this->Proa->alias => array(
+					'id' => $id,
+					'freeze' => 1,
+				),
+			);
+			if ($this->Proa->save($data)) {
+				$this->Flash->success(__('The proa has been saved.'));
+			} else {
+				$this->Flash->error(__('The proa could not be saved. Please, try again.'));
 			}
 		}
 		return $this->redirect(array('action' => 'index'));

@@ -57,6 +57,8 @@ class AppModel extends Model {
             'add' => array('admin'),
             'edit' => array('admin'),
             'delete' => array('admin'),
+            'informProaPct' => array('admin', 'default'),
+            'freeze' => array('admin'),
         ),
         'checks' => array(
             'proa' => array('admin', 'default'),

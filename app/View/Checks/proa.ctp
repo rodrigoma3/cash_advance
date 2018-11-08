@@ -11,6 +11,7 @@
 					<th><?php echo __('Date'); ?></th>
 					<th><?php echo __('Value'); ?></th>
 					<th><?php echo __('Number'); ?></th>
+					<th><?php echo __('Description'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
@@ -20,6 +21,7 @@
 					<th><?php echo __('Date'); ?></th>
 					<th><?php echo __('Value'); ?></th>
 					<th><?php echo __('Number'); ?></th>
+					<th><?php echo __('Description'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</tfoot>
@@ -27,9 +29,10 @@
 				<?php foreach ($checks as $check): ?>
 	<tr>
 		<td>&nbsp;</td>
-		<td><?php echo h($check['Check']['date']); ?>&nbsp;</td>
+		<td><?php echo h(date('d/m/Y', strtotime($check['Check']['date']))); ?>&nbsp;</td>
 		<td><?php echo h($check['Check']['value']); ?>&nbsp;</td>
 		<td><?php echo h($check['Check']['number']); ?>&nbsp;</td>
+		<td><?php echo h($check['Check']['description']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['edit']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['edit'])): ?>
 				<?php echo $this->Html->link('<i class="fas fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $check['Check']['id']), array('escape' => false, 'title' => __('Edit'))); ?>

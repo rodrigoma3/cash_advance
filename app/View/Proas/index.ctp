@@ -18,6 +18,7 @@
 					<th><?php echo __('Start Date'); ?></th>
 					<th><?php echo __('End Date'); ?></th>
 					<th><?php echo __('Pct Date'); ?></th>
+					<th><?php echo __('Freeze'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</thead>
@@ -34,6 +35,7 @@
 					<th><?php echo __('Start Date'); ?></th>
 					<th><?php echo __('End Date'); ?></th>
 					<th><?php echo __('Pct Date'); ?></th>
+					<th><?php echo __('Freeze'); ?></th>
 					<th><?php echo __('Actions'); ?></th>
 				</tr>
 			</tfoot>
@@ -62,7 +64,7 @@
 							<?php endif; ?>
 						</td>
 						<td>
-							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['proa']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['proa'])): ?>
+							<?php if ((in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['proa']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['proa'])) && ((!$proa['Proa']['freeze'] && $this->Session->read('Auth.User.role') != 'admin') || $this->Session->read('Auth.User.role') == 'admin')): ?>
 								<?php echo $this->Html->link($proa['Proa']['proa'], array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id'])); ?>
 							<?php else: ?>
 								<?php echo h($proa['Proa']['proa']); ?>
@@ -75,12 +77,25 @@
 						<td><?php echo h($proa['Proa']['total_value']); ?>&nbsp;</td>
 						<td><?php echo h($usedValue); ?>&nbsp;</td>
 						<td><?php echo h($remainingValue); ?>&nbsp;</td>
-						<td><?php echo h($proa['Proa']['start_date']); ?>&nbsp;</td>
-						<td><?php echo h($proa['Proa']['end_date']); ?>&nbsp;</td>
-						<td><?php echo h($proa['Proa']['pct_date']); ?>&nbsp;</td>
+						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['start_date']))); ?>&nbsp;</td>
+						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['end_date']))); ?>&nbsp;</td>
+						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['pct_date']))); ?>&nbsp;</td>
+						<td><?php echo h($proa['Freeze']['name']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['proa']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['proa'])): ?>
-								<?php echo $this->Html->link('<i class="fas fa-eye text-success"></i>&nbsp;', array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id']), array('escape' => false, 'title' => __('View'))); ?>
+								<?php if ((!$proa['Proa']['freeze'] && $this->Session->read('Auth.User.role') != 'admin') || $this->Session->read('Auth.User.role') == 'admin'): ?>
+									<?php echo $this->Html->link('<i class="fas fa-eye text-success"></i>&nbsp;', array('controller' => 'checks', 'action' => 'proa', $proa['Proa']['id']), array('escape' => false, 'title' => __('View'))); ?>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['informProaPct']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['informProaPct'])): ?>
+								<?php if ((!$proa['Proa']['freeze'] && $this->Session->read('Auth.User.role') != 'admin')): ?>
+									<?php echo $this->Html->link('<i class="fas fa-award text-primary"></i>&nbsp;', array('action' => 'informProaPct', $proa['Proa']['id']), array('escape' => false, 'title' => __('Inform Proa Pct'))); ?>
+								<?php endif; ?>
+							<?php endif; ?>
+							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['freeze']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['freeze'])): ?>
+								<?php if (!$proa['Proa']['freeze']): ?>
+									<?php echo $this->Form->postLink('<i class="fas fa-snowflake text-info"></i>&nbsp;', array('action' => 'freeze', $proa['Proa']['id']), array('escape' => false, 'title' => __('Freeze'), 'confirm' => __('Are you sure you want to freeze proa %s?', $proa['Proa']['proa']))); ?>
+								<?php endif; ?>
 							<?php endif; ?>
 							<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['edit']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['edit'])): ?>
 								<?php echo $this->Html->link('<i class="fas fa-pencil-alt text-warning"></i>&nbsp;', array('action' => 'edit', $proa['Proa']['id']), array('escape' => false, 'title' => __('Edit'))); ?>

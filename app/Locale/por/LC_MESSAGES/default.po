@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-05 23:19-0200\n"
+"PO-Revision-Date: 2018-11-08 01:59-0200\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: pt_BR\n"
@@ -131,47 +131,52 @@ msgstr "Teste de E-mail - %s"
 msgid "Informed email is invalid or absent."
 msgstr "E-mail informado é inválido ou ausente."
 
-#: Controller/ChecksController.php:17;36 Controller/ProasController.php:62;103
+#: Controller/ChecksController.php:18;45;48
+#: Controller/ProasController.php:65;106;123;148
 msgid "Invalid proa"
 msgstr "Proa inválida"
 
-#: Controller/ChecksController.php:42;71
+#: Controller/ChecksController.php:21;51;90;129
+msgid "The proa has been freeze."
+msgstr "A proa está congelada."
+
+#: Controller/ChecksController.php:58;95
 msgid "The check has been saved."
 msgstr "O cheque foi salvo."
 
-#: Controller/ChecksController.php:45;74
+#: Controller/ChecksController.php:61;98
 msgid "The check could not be saved. Please, try again."
 msgstr "O cheque não pôde ser salvo. Por favor, tente novamente."
 
-#: Controller/ChecksController.php:67;101
+#: Controller/ChecksController.php:85;124
 msgid "Invalid check"
 msgstr "Cheque inválido"
 
-#: Controller/ChecksController.php:106
+#: Controller/ChecksController.php:134
 msgid "The check has been deleted."
 msgstr "O cheque foi excluído."
 
-#: Controller/ChecksController.php:108
+#: Controller/ChecksController.php:136
 msgid "The check could not be deleted. Please, try again."
 msgstr "O cheque não pôde ser excluído. Por favor, tente novamente."
 
-#: Controller/ProasController.php:31;66
+#: Controller/ProasController.php:34;69;127;158
 msgid "The proa has been saved."
 msgstr "A proa foi salva."
 
-#: Controller/ProasController.php:34;69
+#: Controller/ProasController.php:37;72;130;160
 msgid "The proa could not be saved. Please, try again."
 msgstr "A proa não pôde ser salva. Por favor, tente de novo."
 
-#: Controller/ProasController.php:106
+#: Controller/ProasController.php:109
 msgid "The proa could not be deleted because it has linked checks."
 msgstr "A proa não pôde ser excluída porque há cheques vinculados."
 
-#: Controller/ProasController.php:110
+#: Controller/ProasController.php:113
 msgid "The proa has been deleted."
 msgstr "A proa foi excluída."
 
-#: Controller/ProasController.php:112
+#: Controller/ProasController.php:115
 msgid "The proa could not be deleted. Please, try again."
 msgstr "A proa não pôde ser excluída. Por favor, tente de novo."
 
@@ -207,7 +212,7 @@ msgstr "Cadastro realizado - %s"
 msgid "The user has been saved."
 msgstr "O usuário foi salvo."
 
-#: Controller/UsersController.php:56;87;120;152;316
+#: Controller/UsersController.php:56;87;120;152;317
 msgid "The user could not be saved. Please, try again."
 msgstr "O usuário não pôde ser salvo. Por favor, tente novamente."
 
@@ -235,60 +240,60 @@ msgstr "O usuário não pôde ser excluído. Por favor, tente novamente."
 msgid "You are logged in!"
 msgstr "Voce está logado!"
 
-#: Controller/UsersController.php:212
+#: Controller/UsersController.php:213
 msgid "Username or password invalid"
 msgstr "Usuário ou senha inválido"
 
-#: Controller/UsersController.php:216;322 View/Layouts/default.ctp:75
+#: Controller/UsersController.php:217;323 View/Layouts/default.ctp:75
 #: View/Users/index.ctp:12;22
 msgid "Email"
 msgstr "E-mail"
 
-#: Controller/UsersController.php:217
+#: Controller/UsersController.php:218
 msgid "Password"
 msgstr "Senha"
 
-#: Controller/UsersController.php:218
+#: Controller/UsersController.php:219
 msgid "Keep me connected"
 msgstr "Mantenha-me conectado"
 
-#: Controller/UsersController.php:228
+#: Controller/UsersController.php:229
 msgid "Good-bye!"
 msgstr "Até logo!"
 
-#: Controller/UsersController.php:237
+#: Controller/UsersController.php:238
 msgid "Invalid token"
 msgstr "Token inválido"
 
-#: Controller/UsersController.php:248
+#: Controller/UsersController.php:249
 msgid "token invalid or expired."
 msgstr "Token inválido ou expirado."
 
-#: Controller/UsersController.php:254
+#: Controller/UsersController.php:255
 msgid "The password has been saved."
 msgstr "A senha foi salva."
 
-#: Controller/UsersController.php:257
+#: Controller/UsersController.php:258
 msgid "The password could not be saved. Please, try again."
 msgstr "A senha não pôde ser salva. Por favor, tente de novo."
 
-#: Controller/UsersController.php:279
+#: Controller/UsersController.php:280
 msgid "Email could not be empty."
 msgstr "Email não pôde ser vazio."
 
-#: Controller/UsersController.php:289
+#: Controller/UsersController.php:290
 msgid "The user could not be found."
 msgstr "O usuário não pôde ser encontrado."
 
-#: Controller/UsersController.php:307
+#: Controller/UsersController.php:308
 msgid "Register Password - %s"
 msgstr "Cadastrar senha - %s"
 
-#: Controller/UsersController.php:310
+#: Controller/UsersController.php:311
 msgid "Email for password creation sent to your mailbox."
 msgstr "Email para criação de senha enviada para sua caixa de correio eletrônico."
 
-#: Model/AppModel.php:286
+#: Model/AppModel.php:288
 msgid "Email sent successfully!"
 msgstr "E-mail enviado com sucesso!"
 
@@ -298,19 +303,19 @@ msgstr "Propriedades de E-mail do App"
 
 #: View/AppProperties/email.ctp:27 View/AppProperties/index.ctp:27
 #: View/Checks/add.ctp:24 View/Checks/edit.ctp:24 View/Proas/add.ctp:24
-#: View/Proas/edit.ctp:24 View/Rubrics/add.ctp:27 View/Rubrics/edit.ctp:27
-#: View/Users/add.ctp:24 View/Users/edit.ctp:24
-#: View/Users/register_password.ctp:26 View/Users/reset_password.ctp:26
-#: View/Users/update_password.ctp:26
+#: View/Proas/edit.ctp:24 View/Proas/inform_proa_pct.ctp:24
+#: View/Rubrics/add.ctp:27 View/Rubrics/edit.ctp:27 View/Users/add.ctp:24
+#: View/Users/edit.ctp:24 View/Users/register_password.ctp:26
+#: View/Users/reset_password.ctp:26 View/Users/update_password.ctp:26
 msgid "Submit"
 msgstr "Salvar"
 
 #: View/AppProperties/email.ctp:28 View/AppProperties/index.ctp:28
 #: View/Checks/add.ctp:25 View/Checks/edit.ctp:25 View/Proas/add.ctp:25
-#: View/Proas/edit.ctp:25 View/Rubrics/add.ctp:28 View/Rubrics/edit.ctp:28
-#: View/Users/add.ctp:25 View/Users/edit.ctp:25
-#: View/Users/register_password.ctp:27 View/Users/reset_password.ctp:27
-#: View/Users/update_password.ctp:27
+#: View/Proas/edit.ctp:25 View/Proas/inform_proa_pct.ctp:25
+#: View/Rubrics/add.ctp:28 View/Rubrics/edit.ctp:28 View/Users/add.ctp:25
+#: View/Users/edit.ctp:25 View/Users/register_password.ctp:27
+#: View/Users/reset_password.ctp:27 View/Users/update_password.ctp:27
 msgid "Reset"
 msgstr "Redefinir"
 
@@ -334,14 +339,15 @@ msgstr "Enviar"
 msgid "App Properties"
 msgstr "Propriedades do app"
 
-#: View/Checks/add.ctp:4 View/Checks/proa.ctp:56
+#: View/Checks/add.ctp:4 View/Checks/proa.ctp:59
 msgid "New Check"
 msgstr "Novo Cheque"
 
 #: View/Checks/add.ctp:27 View/Checks/edit.ctp:27 View/Proas/add.ctp:27
-#: View/Proas/edit.ctp:27 View/Rubrics/add.ctp:30 View/Rubrics/edit.ctp:30
-#: View/Users/add.ctp:27 View/Users/edit.ctp:27
-#: View/Users/reset_password.ctp:29 View/Users/update_password.ctp:29
+#: View/Proas/edit.ctp:27 View/Proas/inform_proa_pct.ctp:27
+#: View/Rubrics/add.ctp:30 View/Rubrics/edit.ctp:30 View/Users/add.ctp:27
+#: View/Users/edit.ctp:27 View/Users/reset_password.ctp:29
+#: View/Users/update_password.ctp:29
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -353,34 +359,38 @@ msgstr "Editar Cheque"
 msgid "Checks"
 msgstr "Cheques"
 
-#: View/Checks/proa.ctp:11;20
+#: View/Checks/proa.ctp:11;21
 msgid "Date"
 msgstr "Data"
 
-#: View/Checks/proa.ctp:12;21
+#: View/Checks/proa.ctp:12;22
 msgid "Value"
 msgstr "Valor"
 
-#: View/Checks/proa.ctp:13;22 View/Rubrics/index.ctp:12;20
+#: View/Checks/proa.ctp:13;23 View/Rubrics/index.ctp:12;20
 msgid "Number"
 msgstr "Número"
 
-#: View/Checks/proa.ctp:14;23 View/Proas/index.ctp:21;37
+#: View/Checks/proa.ctp:14;24 View/Rubrics/index.ctp:13;21
+msgid "Description"
+msgstr "Descrição"
+
+#: View/Checks/proa.ctp:15;25 View/Proas/index.ctp:22;39
 #: View/Rubrics/index.ctp:14;22 View/Users/index.ctp:15;25
 msgid "Actions"
 msgstr "Ações"
 
-#: View/Checks/proa.ctp:35 View/Proas/index.ctp:86 View/Rubrics/index.ctp:33
+#: View/Checks/proa.ctp:38 View/Proas/index.ctp:101 View/Rubrics/index.ctp:33
 #: View/Users/index.ctp:41
 msgid "Edit"
 msgstr "Editar"
 
-#: View/Checks/proa.ctp:38 View/Proas/index.ctp:89 View/Rubrics/index.ctp:36
+#: View/Checks/proa.ctp:41 View/Proas/index.ctp:104 View/Rubrics/index.ctp:36
 #: View/Users/index.ctp:44
 msgid "Delete"
 msgstr "Excluir"
 
-#: View/Checks/proa.ctp:38 View/Rubrics/index.ctp:36 View/Users/index.ctp:44
+#: View/Checks/proa.ctp:41 View/Rubrics/index.ctp:36 View/Users/index.ctp:44
 msgid "Are you sure you want to delete \"%s\"?"
 msgstr "Você tem certeza que quer excluir \"%s\"?"
 
@@ -456,7 +466,7 @@ msgstr "Sair"
 msgid "Development by RMA3 &copy; 2018"
 msgstr "Desenvolvido por RMA3 &copy; 2018"
 
-#: View/Proas/add.ctp:4 View/Proas/index.ctp:114
+#: View/Proas/add.ctp:4 View/Proas/index.ctp:129
 msgid "New Proa"
 msgstr "Nova Proa"
 
@@ -464,63 +474,75 @@ msgstr "Nova Proa"
 msgid "Edit Proa"
 msgstr "Editar Proa"
 
-#: View/Proas/index.ctp:11;27
+#: View/Proas/index.ctp:11;28
 msgid "User"
 msgstr "Usuário"
 
-#: View/Proas/index.ctp:12;28
+#: View/Proas/index.ctp:12;29
 msgid "Proa"
 msgstr "Proa"
 
-#: View/Proas/index.ctp:13;29
+#: View/Proas/index.ctp:13;30
 msgid "Proa Pct"
 msgstr "Proa Pct"
 
-#: View/Proas/index.ctp:14;30
+#: View/Proas/index.ctp:14;31
 msgid "Rubric"
 msgstr "Rubrica"
 
-#: View/Proas/index.ctp:15;31
+#: View/Proas/index.ctp:15;32
 msgid "Total Value"
 msgstr "Valor Total"
 
-#: View/Proas/index.ctp:16;32
+#: View/Proas/index.ctp:16;33
 msgid "Used Value"
 msgstr "Valor Usado"
 
-#: View/Proas/index.ctp:17;33
+#: View/Proas/index.ctp:17;34
 msgid "Remaining Value"
 msgstr "Valor Restante"
 
-#: View/Proas/index.ctp:18;34
+#: View/Proas/index.ctp:18;35
 msgid "Start Date"
 msgstr "Data Inicial"
 
-#: View/Proas/index.ctp:19;35
+#: View/Proas/index.ctp:19;36
 msgid "End Date"
 msgstr "Data Final"
 
-#: View/Proas/index.ctp:20;36
+#: View/Proas/index.ctp:20;37
 msgid "Pct Date"
 msgstr "Data Pct"
 
-#: View/Proas/index.ctp:83
+#: View/Proas/index.ctp:21;38;97
+msgid "Freeze"
+msgstr "Congelar"
+
+#: View/Proas/index.ctp:87
 msgid "View"
 msgstr "Ver"
 
-#: View/Proas/index.ctp:89
+#: View/Proas/index.ctp:92 View/Proas/inform_proa_pct.ctp:4
+msgid "Inform Proa Pct"
+msgstr "Informar Proa Pct"
+
+#: View/Proas/index.ctp:97
+msgid "Are you sure you want to freeze proa %s?"
+msgstr "Você tem certeza que quer congelar proa %s?"
+
+#: View/Proas/index.ctp:104
 msgid "Are you sure you want to delete proa %s?"
 msgstr "Você tem certeza que quer excluir proa %s?"
 
-#: View/Proas/index.ctp:104
+#: View/Proas/index.ctp:119
 msgid "Total Value: %s R$ %s"
 msgstr "Valor Total: %s R$ %s"
 
-#: View/Proas/index.ctp:105
+#: View/Proas/index.ctp:120
 msgid "Total Used Value: %s R$ %s"
 msgstr "Valor Total Usado: %s R$ %s"
 
-#: View/Proas/index.ctp:106
+#: View/Proas/index.ctp:121
 msgid "Total Remaining Value: %s R$ %s"
 msgstr "Valor Total Restante: %s R$ %s"
 
@@ -531,10 +553,6 @@ msgstr "Nova Rubrica"
 #: View/Rubrics/edit.ctp:4
 msgid "Edit Rubric"
 msgstr "Editar Rubrica"
-
-#: View/Rubrics/index.ctp:13;21
-msgid "Description"
-msgstr "Descrição"
 
 #: View/Users/edit.ctp:4
 msgid "Edit User"

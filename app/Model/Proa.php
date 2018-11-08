@@ -16,6 +16,13 @@ class Proa extends AppModel {
  */
 	public $displayField = 'proa';
 
+	protected $enum = array(
+		'freeze' => array(
+			'0' => 'No',
+			'1' => 'Yes',
+		),
+	);
+
 /**
  * Validation rules
  *

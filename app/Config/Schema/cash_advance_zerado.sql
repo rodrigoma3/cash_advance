@@ -36,6 +36,7 @@ CREATE TABLE `checks` (
   `date` date NOT NULL,
   `value` double NOT NULL,
   `number` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `proa_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -54,6 +55,7 @@ CREATE TABLE `proas` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `pct_date` date NOT NULL,
+  `freeze` tinyint(1) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL,
   `rubric_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

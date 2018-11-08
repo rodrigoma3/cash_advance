@@ -199,6 +199,7 @@ class UsersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->Cookie->read('keepmeconnected') != null) {
 	  		if ($this->Auth->login()) {
+				$this->Session->write('perms', $this->User->perms);
 				if (isset($this->request->data[$this->User->alias]['keep_me_connected']) && $this->request->data[$this->User->alias]['keep_me_connected'] && $this->Cookie->read('keepmeconnected') == null) {
 					$cookie = array();
 					$cookie['email'] = $this->User->encrypt($this->request->data[$this->User->alias]['email']);

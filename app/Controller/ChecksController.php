@@ -13,8 +13,13 @@ class ChecksController extends AppController {
  * @return void
  */
 	public function proa($id = null) {
-		if (!$this->Check->Proa->exists($id)) {
+		$this->Check->Proa->id = $id;
+		if (!$this->Check->Proa->exists()) {
 			throw new NotFoundException(__('Invalid proa'));
+		}
+		if ($this->Auth->user('role') != 'admin' && $this->Check->Proa->field('freeze')) {
+			$this->Flash->error(__('The proa has been freeze.'));
+			$this->redirect($this->referer());
 		}
 		$this->Check->recursive = 0;
 		$options = array(
@@ -42,6 +47,10 @@ class ChecksController extends AppController {
 		if ($this->Auth->user('role') != 'admin' && $this->Check->Proa->field('user_id') != $this->Auth->user('id')) {
 			throw new NotFoundException(__('Invalid proa'));
 		}
+		if ($this->Auth->user('role') != 'admin' && $this->Check->Proa->field('freeze')) {
+			$this->Flash->error(__('The proa has been freeze.'));
+			$this->redirect($this->referer());
+		}
 		if ($this->request->is('post')) {
 			$this->request->data[$this->Check->alias]['proa_id'] = $id;
 			$this->Check->create();
@@ -54,9 +63,10 @@ class ChecksController extends AppController {
 		}
 		$proas = $this->Check->Proa->find('list');
         $fields = array(
-			'date',
+			'date' => array('dateFormat' => 'D-M-Y'),
 			'value',
 			'number',
+			'description',
 		);
         $blacklist = array();
         $this->set(compact('fields', 'blacklist', 'proas'));
@@ -70,8 +80,15 @@ class ChecksController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Check->exists($id)) {
+		$this->Check->id = $id;
+		if (!$this->Check->exists()) {
 			throw new NotFoundException(__('Invalid check'));
+		}
+		$options = array('conditions' => array($this->Check->alias . '.' . $this->Check->primaryKey => $id));
+		$check = $this->Check->find('first', $options);
+		if ($this->Auth->user('role') != 'admin' && $check[$this->Check->Proa->alias]['freeze']) {
+			$this->Flash->error(__('The proa has been freeze.'));
+			$this->redirect($this->referer());
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Check->save($this->request->data)) {
@@ -81,18 +98,17 @@ class ChecksController extends AppController {
 				$this->Flash->error(__('The check could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array($this->Check->alias . '.' . $this->Check->primaryKey => $id));
-			$this->request->data = $this->Check->find('first', $options);
+			$this->request->data = $check;
 		}
-		$proas = $this->Check->Proa->find('list');
         $fields = array(
 			'id',
 			'date',
 			'value',
 			'number',
+			'description',
 		);
         $blacklist = array();
-        $this->set(compact('fields', 'blacklist', 'proas'));
+        $this->set(compact('fields', 'blacklist', 'check'));
 	}
 
 /**
@@ -107,13 +123,18 @@ class ChecksController extends AppController {
 		if (!$this->Check->exists()) {
 			throw new NotFoundException(__('Invalid check'));
 		}
-		$proaId = $this->Check->field('proa_id');
+		$options = array('conditions' => array($this->Check->alias . '.' . $this->Check->primaryKey => $id));
+		$check = $this->Check->find('first', $options);
+		if ($this->Auth->user('role') != 'admin' && $check[$this->Check->Proa->alias]['freeze']) {
+			$this->Flash->error(__('The proa has been freeze.'));
+			$this->redirect($this->referer());
+		}
 		$this->request->allowMethod('post', 'delete');
 		if ($this->Check->delete()) {
 			$this->Flash->success(__('The check has been deleted.'));
 		} else {
 			$this->Flash->error(__('The check could not be deleted. Please, try again.'));
 		}
-		return $this->redirect(array('action' => 'proa', $proaId));
+		return $this->redirect(array('action' => 'proa', $check[$this->Check->alias]['proa_id']));
 	}
 }
