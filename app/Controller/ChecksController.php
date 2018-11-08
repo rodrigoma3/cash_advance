@@ -22,6 +22,9 @@ class ChecksController extends AppController {
 				'proa_id' => $id,
 			),
 		);
+		if ($this->Auth->user('role') != 'admin') {
+			$options['conditions'][$this->Check->Proa->alias . '.user_id'] = $this->Auth->user('id');
+		}
         $checks = $this->Check->find('all', $options);
 		$this->set(compact('checks'));
 	}
@@ -32,7 +35,11 @@ class ChecksController extends AppController {
  * @return void
  */
 	public function add($id = null) {
-		if (!$this->Check->Proa->exists($id)) {
+		$this->Check->Proa->id = $id;
+		if (!$this->Check->Proa->exists()) {
+			throw new NotFoundException(__('Invalid proa'));
+		}
+		if ($this->Auth->user('role') != 'admin' && $this->Check->Proa->field('user_id') != $this->Auth->user('id')) {
 			throw new NotFoundException(__('Invalid proa'));
 		}
 		if ($this->request->is('post')) {

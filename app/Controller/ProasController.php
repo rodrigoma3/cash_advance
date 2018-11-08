@@ -14,8 +14,11 @@ class ProasController extends AppController {
  * @return void
  */
 	public function index() {
-		// $this->Proa->recursive = 0;
-        $proas = $this->Proa->find('all');
+		$options = array();
+		if ($this->Auth->user('role') != 'admin') {
+			$options['conditions']['user_id'] = $this->Auth->user('id');
+		}
+        $proas = $this->Proa->find('all', $options);
 		$this->set(compact('proas'));
 	}
 
