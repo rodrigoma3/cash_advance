@@ -42,7 +42,7 @@ class ProasController extends AppController {
 		$rubrics = Hash::combine($rubrics, '{n}.Rubric.id', array('%s - %s', '{n}.Rubric.number', '{n}.Rubric.description'));
         $fields = array(
 			'proa',
-			'total_value',
+			'total_value' => array('between' => 'R$ '),
 			'start_date' => array('value' => date('Y-m-d'), 'dateFormat' => 'D-M-Y'),
 			'end_date' => array('value' => date('Y-m-d', strtotime('+ 29 days')), 'dateFormat' => 'D-M-Y'),
 			'pct_date' => array('value' => date('Y-m-d', strtotime('+ 58 days')), 'dateFormat' => 'D-M-Y'),
@@ -75,17 +75,17 @@ class ProasController extends AppController {
 			$options = array('conditions' => array($this->Proa->alias . '.' . $this->Proa->primaryKey => $id));
 			$this->request->data = $this->Proa->find('first', $options);
 		}
-		$users = $this->Proa->User->find('list');
-		$rubrics = $this->Proa->Rubric->find('list', array('fields' => array('number', 'description')));
-		$rubrics = $this->Proa->listKeyValueInValue($rubrics);
+		$users = $this->Proa->User->find('list', array('conditions' => array('enabled' => 1), 'order' => array('name')));
+		$rubrics = $this->Proa->Rubric->find('all', array('fields' => array('id', 'number', 'description')));
+		$rubrics = Hash::combine($rubrics, '{n}.Rubric.id', array('%s - %s', '{n}.Rubric.number', '{n}.Rubric.description'));
         $fields = array(
 			'id',
 			'proa',
 			'proa_pct',
-			'total_value',
-			'start_date',
-			'end_date',
-			'pct_date',
+			'total_value' => array('between' => 'R$ '),
+			'start_date' => array('dateFormat' => 'D-M-Y'),
+			'end_date' => array('dateFormat' => 'D-M-Y'),
+			'pct_date' => array('dateFormat' => 'D-M-Y'),
 			'user_id',
 			'rubric_id',
 		);

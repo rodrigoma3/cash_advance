@@ -48,7 +48,7 @@
 					<?php
 						$usedValue = array_sum(Hash::extract($proa['Check'], '{n}.value'));
 						if (!is_numeric($usedValue)) {
-							$usedValue = 0;
+							$usedValue = 0.00;
 						}
 						$remainingValue = $proa['Proa']['total_value'] - $usedValue;
 						$totalUsedValue = $totalUsedValue + $usedValue;
@@ -74,9 +74,9 @@
 						<td>
 							<?php echo h($proa['Rubric']['number'] . ' - ' . $proa['Rubric']['description']); ?>
 						</td>
-						<td><?php echo h($proa['Proa']['total_value']); ?>&nbsp;</td>
-						<td><?php echo h($usedValue); ?>&nbsp;</td>
-						<td><?php echo h($remainingValue); ?>&nbsp;</td>
+						<td><?php echo h(CakeNumber::currency($proa['Proa']['total_value'], 'BRL')); ?>&nbsp;</td>
+						<td><?php echo h(CakeNumber::currency($usedValue, 'BRL')); ?>&nbsp;</td>
+						<td><?php echo h(CakeNumber::currency($remainingValue, 'BRL')); ?>&nbsp;</td>
 						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['start_date']))); ?>&nbsp;</td>
 						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['end_date']))); ?>&nbsp;</td>
 						<td><?php echo h(date('d/m/Y', strtotime($proa['Proa']['pct_date']))); ?>&nbsp;</td>
@@ -116,9 +116,9 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<strong><?php echo __('Total Value: %s R$ %s', '</strong>', array_sum(Hash::extract($proas, '{n}.Proa.total_value'))); ?>&nbsp;
-		<strong><?php echo __('Total Used Value: %s R$ %s', '</strong>', $totalUsedValue); ?>&nbsp;
-		<strong><?php echo __('Total Remaining Value: %s R$ %s', '</strong>', $totalRemainingValue); ?>&nbsp;
+		<strong><?php echo __('Total Value: %s %s', '</strong>', CakeNumber::currency(array_sum(Hash::extract($proas, '{n}.Proa.total_value')), 'BRL')); ?>&nbsp;
+		<strong><?php echo __('Total Used Value: %s %s', '</strong>', CakeNumber::currency($totalUsedValue, 'BRL')); ?>&nbsp;
+		<strong><?php echo __('Total Remaining Value: %s %s', '</strong>', CakeNumber::currency($totalRemainingValue, 'BRL')); ?>&nbsp;
 	</div>
 </div>
 

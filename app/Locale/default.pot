@@ -13,99 +13,99 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/AppController.php:68
+#: Controller/AppController.php:77
 msgid "You are not authorized to access that location."
 msgstr ""
 
-#: Controller/AppController.php:102
+#: Controller/AppController.php:111
 msgid "Cash Advance"
 msgstr ""
 
-#: Controller/AppController.php:103
+#: Controller/AppController.php:112
 msgid "Default"
 msgstr ""
 
-#: Controller/AppController.php:104
+#: Controller/AppController.php:113
 msgid "Administrator"
 msgstr ""
 
-#: Controller/AppController.php:105
+#: Controller/AppController.php:114
 msgid "Confirm Password"
 msgstr ""
 
-#: Controller/AppController.php:106
+#: Controller/AppController.php:115
 msgid "Current Password"
 msgstr ""
 
-#: Controller/AppController.php:107
+#: Controller/AppController.php:116
 msgid "Token Expiration Time"
 msgstr ""
 
-#: Controller/AppController.php:108
+#: Controller/AppController.php:117
 msgid "Administrator Email"
 msgstr ""
 
-#: Controller/AppController.php:109
+#: Controller/AppController.php:118
 msgid "App Name"
 msgstr ""
 
-#: Controller/AppController.php:110
+#: Controller/AppController.php:119
 msgid "Email Send Mail"
 msgstr ""
 
-#: Controller/AppController.php:111
+#: Controller/AppController.php:120
 msgid "Email Host"
 msgstr ""
 
-#: Controller/AppController.php:112
+#: Controller/AppController.php:121
 msgid "Email Port"
 msgstr ""
 
-#: Controller/AppController.php:113
+#: Controller/AppController.php:122
 msgid "Email Tls"
 msgstr ""
 
-#: Controller/AppController.php:114
+#: Controller/AppController.php:123
 msgid "Email Ssl"
 msgstr ""
 
-#: Controller/AppController.php:115
+#: Controller/AppController.php:124
 msgid "Email Timeout"
 msgstr ""
 
-#: Controller/AppController.php:116
+#: Controller/AppController.php:125
 msgid "Email Username"
 msgstr ""
 
-#: Controller/AppController.php:117
+#: Controller/AppController.php:126
 msgid "Email Password"
 msgstr ""
 
-#: Controller/AppController.php:118
+#: Controller/AppController.php:127
 msgid "Email From Name"
 msgstr ""
 
-#: Controller/AppController.php:119
+#: Controller/AppController.php:128
 msgid "Email From Email"
 msgstr ""
 
-#: Controller/AppController.php:120
+#: Controller/AppController.php:129
 msgid "Email Reply To"
 msgstr ""
 
-#: Controller/AppController.php:121
+#: Controller/AppController.php:130
 msgid "Email Cc"
 msgstr ""
 
-#: Controller/AppController.php:122
+#: Controller/AppController.php:131
 msgid "Email Bcc"
 msgstr ""
 
-#: Controller/AppController.php:123
+#: Controller/AppController.php:132
 msgid "Yes"
 msgstr ""
 
-#: Controller/AppController.php:124
+#: Controller/AppController.php:133
 msgid "No"
 msgstr ""
 
@@ -583,15 +583,15 @@ msgid "Are you sure you want to delete proa %s?"
 msgstr ""
 
 #: View/Proas/index.ctp:119
-msgid "Total Value: %s R$ %s"
+msgid "Total Value: %s %s"
 msgstr ""
 
 #: View/Proas/index.ctp:120
-msgid "Total Used Value: %s R$ %s"
+msgid "Total Used Value: %s %s"
 msgstr ""
 
 #: View/Proas/index.ctp:121
-msgid "Total Remaining Value: %s R$ %s"
+msgid "Total Remaining Value: %s %s"
 msgstr ""
 
 #: View/Rubrics/add.ctp:4

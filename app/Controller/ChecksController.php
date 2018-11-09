@@ -64,7 +64,7 @@ class ChecksController extends AppController {
 		$proas = $this->Check->Proa->find('list');
         $fields = array(
 			'date' => array('dateFormat' => 'D-M-Y'),
-			'value',
+			'value' => array('between' => 'R$ '),
 			'number',
 			'description',
 		);
@@ -103,7 +103,7 @@ class ChecksController extends AppController {
         $fields = array(
 			'id',
 			'date',
-			'value',
+			'value' => array('between' => 'R$ '),
 			'number',
 			'description',
 		);

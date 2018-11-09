@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2018-11-08 01:59-0200\n"
+"PO-Revision-Date: 2018-11-08 23:11-0200\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "Language: pt_BR\n"
@@ -15,99 +15,99 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.1.1\n"
 
-#: Controller/AppController.php:68
+#: Controller/AppController.php:77
 msgid "You are not authorized to access that location."
 msgstr "Você não está autorizado a acessar esta área."
 
-#: Controller/AppController.php:102
+#: Controller/AppController.php:111
 msgid "Cash Advance"
 msgstr "Adiantamento Numerario"
 
-#: Controller/AppController.php:103
+#: Controller/AppController.php:112
 msgid "Default"
 msgstr "Padrão"
 
-#: Controller/AppController.php:104
+#: Controller/AppController.php:113
 msgid "Administrator"
 msgstr "Administrador"
 
-#: Controller/AppController.php:105
+#: Controller/AppController.php:114
 msgid "Confirm Password"
 msgstr "Confirmar Senha"
 
-#: Controller/AppController.php:106
+#: Controller/AppController.php:115
 msgid "Current Password"
 msgstr "Senha Atual"
 
-#: Controller/AppController.php:107
+#: Controller/AppController.php:116
 msgid "Token Expiration Time"
 msgstr "Tempo de Expiração do Token"
 
-#: Controller/AppController.php:108
+#: Controller/AppController.php:117
 msgid "Administrator Email"
 msgstr "E-mail do Administrador"
 
-#: Controller/AppController.php:109
+#: Controller/AppController.php:118
 msgid "App Name"
 msgstr "Nome do App"
 
-#: Controller/AppController.php:110
+#: Controller/AppController.php:119
 msgid "Email Send Mail"
 msgstr "Enviar E-mail"
 
-#: Controller/AppController.php:111
+#: Controller/AppController.php:120
 msgid "Email Host"
 msgstr "E-mail Servidor"
 
-#: Controller/AppController.php:112
+#: Controller/AppController.php:121
 msgid "Email Port"
 msgstr "E-mail Porta"
 
-#: Controller/AppController.php:113
+#: Controller/AppController.php:122
 msgid "Email Tls"
 msgstr "E-mail TLS"
 
-#: Controller/AppController.php:114
+#: Controller/AppController.php:123
 msgid "Email Ssl"
 msgstr "E-mail SSL"
 
-#: Controller/AppController.php:115
+#: Controller/AppController.php:124
 msgid "Email Timeout"
 msgstr "E-mail Tempo de tentativa"
 
-#: Controller/AppController.php:116
+#: Controller/AppController.php:125
 msgid "Email Username"
 msgstr "E-mail Usuário"
 
-#: Controller/AppController.php:117
+#: Controller/AppController.php:126
 msgid "Email Password"
 msgstr "E-mail Senha"
 
-#: Controller/AppController.php:118
+#: Controller/AppController.php:127
 msgid "Email From Name"
 msgstr "E-mail De Nome"
 
-#: Controller/AppController.php:119
+#: Controller/AppController.php:128
 msgid "Email From Email"
 msgstr "E-mail De E-mail"
 
-#: Controller/AppController.php:120
+#: Controller/AppController.php:129
 msgid "Email Reply To"
 msgstr "E-mail Responder Para"
 
-#: Controller/AppController.php:121
+#: Controller/AppController.php:130
 msgid "Email Cc"
 msgstr "E-mail cc"
 
-#: Controller/AppController.php:122
+#: Controller/AppController.php:131
 msgid "Email Bcc"
 msgstr "E-mail bcc"
 
-#: Controller/AppController.php:123
+#: Controller/AppController.php:132
 msgid "Yes"
 msgstr "Sim"
 
-#: Controller/AppController.php:124
+#: Controller/AppController.php:133
 msgid "No"
 msgstr "Não"
 
@@ -535,16 +535,16 @@ msgid "Are you sure you want to delete proa %s?"
 msgstr "Você tem certeza que quer excluir proa %s?"
 
 #: View/Proas/index.ctp:119
-msgid "Total Value: %s R$ %s"
-msgstr "Valor Total: %s R$ %s"
+msgid "Total Value: %s %s"
+msgstr "Valor Total: %s %s"
 
 #: View/Proas/index.ctp:120
-msgid "Total Used Value: %s R$ %s"
-msgstr "Valor Total Usado: %s R$ %s"
+msgid "Total Used Value: %s %s"
+msgstr "Valor Total Usado: %s %s"
 
 #: View/Proas/index.ctp:121
-msgid "Total Remaining Value: %s R$ %s"
-msgstr "Valor Total Restante: %s R$ %s"
+msgid "Total Remaining Value: %s %s"
+msgstr "Valor Total Restante: %s %s"
 
 #: View/Rubrics/add.ctp:4 View/Rubrics/index.ctp:53
 msgid "New Rubric"

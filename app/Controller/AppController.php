@@ -63,6 +63,15 @@ class AppController extends Controller {
     public $helpers = array('Html', 'Form', 'Session');
 
     public function beforeFilter() {
+        CakeNumber::addFormat('BRL', array(
+            'before' => 'R$ ',
+            'thousands' => '.',
+            'decimals' => ',',
+            'places' => 2,
+            'negative' => '- ',
+            'zero' => 'R$ 0,00',
+        ));
+
         if ($this->Auth->loggedIn()) {
             $this->Auth->unauthorizedRedirect = $this->referer();
             $this->Auth->authError = __('You are not authorized to access that location.');

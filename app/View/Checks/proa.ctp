@@ -30,7 +30,7 @@
 	<tr>
 		<td>&nbsp;</td>
 		<td><?php echo h(date('d/m/Y', strtotime($check['Check']['date']))); ?>&nbsp;</td>
-		<td><?php echo h($check['Check']['value']); ?>&nbsp;</td>
+		<td><?php echo h(CakeNumber::currency($check['Check']['value'], 'BRL')); ?>&nbsp;</td>
 		<td><?php echo h($check['Check']['number']); ?>&nbsp;</td>
 		<td><?php echo h($check['Check']['description']); ?>&nbsp;</td>
 		<td class="actions">
