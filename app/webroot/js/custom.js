@@ -90,4 +90,38 @@ $(document).ready(function() {
             // maximumSelectionLength: 1
         });
     }
+
+    $(document).on('change', '#ProaStartDateDay, #ProaStartDateMonth, #ProaStartDateYear', function() {
+        var day = $('#ProaStartDateDay').prop('value');
+        var month = $('#ProaStartDateMonth').prop('value');
+        var year = $('#ProaStartDateYear').prop('value');
+        // var date = year + "-" + month + "-" + day + "T00:00:00";
+        var dateStart = new Date(year + "-" + month + "-" + day + "T00:00:00");
+        var dateEnd = new Date(year + "-" + month + "-" + day + "T00:00:00");
+        dateEnd.setDate(dateStart.getDate() + 29);
+        var datePct = new Date(year + "-" + month + "-" + day + "T00:00:00");
+        datePct.setDate(dateStart.getDate() + 58);
+        // console.log("date: " + date);
+        console.log("dateStart: " + dateStart);
+        console.log("dateEnd: " + dateEnd);
+        console.log("datePct: " + datePct);
+        // console.log(dateEnd.getDate()); //dia
+        // console.log(dateEnd.getMonth() + 1); //mes
+        // console.log(dateEnd.getFullYear()); //ano
+
+        $('#ProaEndDateDay').prop('value', zeroLeftDate(dateEnd.getDate())).change();
+        $('#ProaEndDateMonth').prop('value', zeroLeftDate(dateEnd.getMonth() + 1)).change();
+        $('#ProaEndDateYear').prop('value', dateEnd.getFullYear()).change();
+
+        $('#ProaPctDateDay').prop('value', zeroLeftDate(datePct.getDate())).change();
+        $('#ProaPctDateMonth').prop('value', zeroLeftDate(datePct.getMonth() + 1)).change();
+        $('#ProaPctDateYear').prop('value', datePct.getFullYear()).change();
+    });
+
+    function zeroLeftDate(d) {
+        if (d < 10) {
+            return "0" + d;
+        }
+        return d;
+    }
 });
