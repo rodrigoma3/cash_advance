@@ -162,4 +162,25 @@ class ProasController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function unfreeze($id = null) {
+		$this->Proa->id = $id;
+		if (!$this->Proa->exists()) {
+			throw new NotFoundException(__('Invalid proa'));
+		}
+		if ($this->request->is(array('post'))) {
+			$data = array(
+				$this->Proa->alias => array(
+					'id' => $id,
+					'freeze' => 0,
+				),
+			);
+			if ($this->Proa->save($data)) {
+				$this->Flash->success(__('The proa has been saved.'));
+			} else {
+				$this->Flash->error(__('The proa could not be saved. Please, try again.'));
+			}
+		}
+		return $this->redirect(array('action' => 'index'));
+	}
 }
