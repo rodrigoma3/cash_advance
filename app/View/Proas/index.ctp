@@ -94,7 +94,7 @@
 							<?php endif; ?>
 							<?php if ($proa['Proa']['freeze']): ?>
 								<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['unfreeze']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['unfreeze'])): ?>
-									<?php echo $this->Form->postLink('<i class="fas fa-snowflake text-info"></i>&nbsp;', array('action' => 'unfreeze', $proa['Proa']['id']), array('escape' => false, 'title' => __('Unfreeze'), 'confirm' => __('Are you sure you want to unfreeze proa %s?', $proa['Proa']['proa']))); ?>
+									<?php echo $this->Form->postLink('<i class="fas fa-fire text-info"></i>&nbsp;', array('action' => 'unfreeze', $proa['Proa']['id']), array('escape' => false, 'title' => __('Unfreeze'), 'confirm' => __('Are you sure you want to unfreeze proa %s?', $proa['Proa']['proa']))); ?>
 								<?php endif; ?>
 							<?php else: ?>
 								<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['proas']['freeze']) || in_array('semAutenticacao', $this->Session->read('perms')['proas']['freeze'])): ?>
