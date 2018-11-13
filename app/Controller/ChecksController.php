@@ -137,4 +137,42 @@ class ChecksController extends AppController {
 		}
 		return $this->redirect(array('action' => 'proa', $check[$this->Check->alias]['proa_id']));
 	}
+
+	public function find() {
+		$checks = array();
+		if ($this->request->is(array('post'))) {
+			$search = $this->request->data[$this->Check->alias]['search'];
+			if (empty($search)) {
+				$this->Flash->error(__('Search field can not be empty. Please, try again.'));
+			} else {
+				$this->Check->Proa->unbindModel(array('hasMany' => array('Check')));
+				$options = array(
+					'conditions' => array(
+						'OR' => array(
+							$this->Check->alias . '.number LIKE' => '%' . $search . '%',
+							$this->Check->alias . '.description LIKE' => '%' . $search . '%',
+							$this->Check->alias . '.date' => $search,
+						),
+					),
+					'recursive' => 2,
+				);
+				$value = str_replace(',', '.', $search);
+				if (is_numeric($value)) {
+					$options['conditions']['OR'][$this->Check->alias . '.value'] = $value;
+				}
+				if ($this->Auth->user('role') != 'admin') {
+					$options['conditions'][$this->Check->Proa->alias . '.user_id'] = $this->Auth->user('id');
+				}
+				$checks = $this->Check->find('all', $options);
+				if (empty($checks)) {
+					$this->Flash->warning(__('No checks found!'));
+				}
+			}
+		}
+		$fields = array(
+			'search' => array('label' => false),
+		);
+		$blacklist = array();
+		$this->set(compact('fields', 'blacklist', 'checks'));
+	}
 }

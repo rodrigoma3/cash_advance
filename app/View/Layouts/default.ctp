@@ -57,6 +57,11 @@
 						<?php echo $this->Html->link('<i class="fas fa-folder-open"></i>&nbsp;'.__('Proas'), array('controller' => 'proas', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>
 					</li>
 				<?php endif; ?>
+				<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['checks']['find']) || in_array('semAutenticacao', $this->Session->read('perms')['checks']['find'])): ?>
+					<li class="nav-item <?php if ($this->params['controller'] == 'checks' && $this->params['action'] == 'find') echo 'active'; ?>">
+						<?php echo $this->Html->link('<i class="fas fa-search"></i>&nbsp;'.__('Find'), array('controller' => 'checks', 'action' => 'find'), array('escape' => false, 'class' => 'nav-link')); ?>
+					</li>
+				<?php endif; ?>
 				<?php if (in_array($this->Session->read('Auth.User.role'), $this->Session->read('perms')['rubrics']['index']) || in_array('semAutenticacao', $this->Session->read('perms')['rubrics']['index'])): ?>
 					<li class="nav-item <?php if ($this->params['controller'] == 'rubrics' && $this->params['action'] == 'index') echo 'active'; ?>">
 						<?php echo $this->Html->link('<i class="fas fa-file-signature"></i>&nbsp;'.__('Rubrics'), array('controller' => 'rubrics', 'action' => 'index'), array('escape' => false, 'class' => 'nav-link')); ?>

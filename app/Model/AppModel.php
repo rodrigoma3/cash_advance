@@ -66,6 +66,7 @@ class AppModel extends Model {
             'add' => array('admin', 'default'),
             'edit' => array('admin', 'default'),
             'delete' => array('admin', 'default'),
+            'find' => array('admin', 'default'),
         ),
         'appProperties' => array(
             'index' => array('admin'),
