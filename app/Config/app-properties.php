@@ -4,6 +4,7 @@ $config = array (
         array (
             'Email' =>
                 array (
+                    'send_mail' => false,
                     'host' => 'smtp.email.com.br',
                     'port' => '587',
                     'tls' => '0',
@@ -19,6 +20,7 @@ $config = array (
                 ),
             'App' => array(
                 'app_name' => 'Cash Advance',
+                'token_expiration_time' => '2'
             ),
         ),
 );

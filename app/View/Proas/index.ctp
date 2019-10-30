@@ -119,10 +119,8 @@
 <div class="hr hr-24"></div>
 
 <div class="row">
-	<div class="col-md-12">
-		<strong><?php echo __('Total Value: %s %s', '</strong>', CakeNumber::currency(array_sum(Hash::extract($proas, '{n}.Proa.total_value')), 'BRL')); ?>&nbsp;
-		<strong><?php echo __('Total Used Value: %s %s', '</strong>', CakeNumber::currency($totalUsedValue, 'BRL')); ?>&nbsp;
-		<strong><?php echo __('Total Remaining Value: %s %s', '</strong>', CakeNumber::currency($totalRemainingValue, 'BRL')); ?>&nbsp;
+	<div class="col-md-12 totais">
+
 	</div>
 </div>
 
@@ -135,3 +133,7 @@
 		</div>
 	</div>
 <?php endif; ?>
+
+<script type="text/javascript">
+	var proaFooterCallback = true;
+</script>
