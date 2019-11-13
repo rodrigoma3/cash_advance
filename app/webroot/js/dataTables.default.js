@@ -41,7 +41,7 @@ if (typeof proaFooterCallback === 'undefined') {
         // Update footer
         // $( api.column( 4 ).footer() ).html(
         $('.totais').html(
-            '<strong>' + $(api.column(5).header()).html() + ':</strong> R$ '+ currencyFormat(total) +' <strong>Total ' + $(api.column(6).header()).html() + ':</strong> R$ '+ currencyFormat(totalUsado) +' <strong>Total ' + $(api.column(7).header()).html() + ':</strong> R$ ' + currencyFormat(totalRestante)
+            '<strong>' + $(api.column(5).header()).html() + ':</strong> R$ '+ currencyFormat(total.toFixed(2)) +' <strong>Total ' + $(api.column(6).header()).html() + ':</strong> R$ '+ currencyFormat(totalUsado.toFixed(2)) +' <strong>Total ' + $(api.column(7).header()).html() + ':</strong> R$ ' + currencyFormat(totalRestante.toFixed(2))
         );
     };
 }
@@ -258,13 +258,20 @@ $(document).ready(function() {
                         var input = $('<input type="text" placeholder="'+search+' '+title+'" />')
                         .appendTo( $(column.footer()).empty() )
                         .on( 'keyup change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
+                            // var val = $.fn.dataTable.util.escapeRegex(
+                            //     $(this).val()
+                            // );
+                            var val = $(this).val();
                             if ( column.search() !== val ) {
-                                column
-                                .search( val )
-                                .draw();
+                                if (val == " ") {
+                                    column
+                                    .search( '^\\s\\s*$', true, false )
+                                    .draw();
+                                } else {
+                                    column
+                                    .search( val )
+                                    .draw();
+                                }
                             }
                         } );
                     });
