@@ -1,3 +1,50 @@
+if (typeof proaFooterCallback === 'undefined') {
+    var proaFooterCallback = [];
+} else {
+    proaFooterCallback = function ( row, data, start, end, display ) {
+        var api = this.api(), data;
+
+        // Remove the formatting to get integer data for summation
+        var intVal = function ( i ) {
+            return typeof i === 'string' ?
+                i.replace(/[R\$.&nbsp; ]/g, '').replace(/[,]/g, '.')*1 :
+                typeof i === 'number' ?
+                    i : 0;
+        };
+
+        var currencyFormat = function ( i ) {
+            var m = (i + '').replace(/[.]/g, ',').replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+            return (m.indexOf(',') == -1) ? m+',00' : m;
+        };
+
+        total = api
+            .column( 5, {search: 'applied'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        totalUsado = api
+            .column( 6, {search: 'applied'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        totalRestante = api
+            .column( 7, {search: 'applied'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+
+        // Update footer
+        // $( api.column( 4 ).footer() ).html(
+        $('.totais').html(
+            '<strong>' + $(api.column(5).header()).html() + ':</strong> R$ '+ currencyFormat(total.toFixed(2)) +' <strong>Total ' + $(api.column(6).header()).html() + ':</strong> R$ '+ currencyFormat(totalUsado.toFixed(2)) +' <strong>Total ' + $(api.column(7).header()).html() + ':</strong> R$ ' + currencyFormat(totalRestante.toFixed(2))
+        );
+    };
+}
 if (typeof visibilityFalse === 'undefined') {
     var visibilityFalse = [];
 }
@@ -131,7 +178,10 @@ if (typeof exportTable === 'undefined' || !exportTable) {
                     key: 'r'
                 },
 				orientation: 'landscape',
-				pageSize: 'A4'
+				pageSize: 'A4',
+                messageTop: function() {
+                    return $('.totais').html().replace(/(<([^>]+)>)/g, '');
+                },
             },
             {
                 extend: 'print',
@@ -143,25 +193,28 @@ if (typeof exportTable === 'undefined' || !exportTable) {
                     altKey: true,
                     key: 'p'
                 },
+                messageTop: function() {
+                    return $('.totais').html();
+                },
 				customize: function(win) {
-	 
+
 					var last = null;
 					var current = null;
 					var bod = [];
-	 
+
 					var css = '@page { size: landscape; }'
 						head = win.document.head || win.document.getElementsByTagName('head')[0],
 						style = win.document.createElement('style');
-	 
+
 					style.type = 'text/css';
 					style.media = 'print';
-	 
+
 					if (style.styleSheet) {
 					  style.styleSheet.cssText = css;
 					} else {
 					  style.appendChild(win.document.createTextNode(css));
 					}
-	 
+
 					head.appendChild(style);
 				}
             }
@@ -205,13 +258,20 @@ $(document).ready(function() {
                         var input = $('<input type="text" placeholder="'+search+' '+title+'" />')
                         .appendTo( $(column.footer()).empty() )
                         .on( 'keyup change', function () {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
+                            // var val = $.fn.dataTable.util.escapeRegex(
+                            //     $(this).val()
+                            // );
+                            var val = $(this).val();
                             if ( column.search() !== val ) {
-                                column
-                                .search( val )
-                                .draw();
+                                if (val == " ") {
+                                    column
+                                    .search( '^\\s\\s*$', true, false )
+                                    .draw();
+                                } else {
+                                    column
+                                    .search( val )
+                                    .draw();
+                                }
                             }
                         } );
                     });
@@ -264,6 +324,7 @@ $(document).ready(function() {
             //     visible: false
             // }
         ],
+        footerCallback: proaFooterCallback,
         // select: selectActive,
         order: columnOrder,
         buttons: [

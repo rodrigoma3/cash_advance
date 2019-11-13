@@ -27,12 +27,12 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			if (Configure::read('AppProperties.email_send_mail')) {
+			if (Configure::read('AppProperties.Email.send_mail')) {
 				$this->request->data[$this->User->alias]['token'] = $this->User->token();
 				$this->request->data[$this->User->alias]['token_expiration'] = date('Y-m-d H:i:s', strtotime('+ ' . Configure::read('AppProperties.token_expiration_time') . 'hours'));
 			}
 			if ($this->User->save($this->request->data)) {
-				if (Configure::read('AppProperties.email_send_mail')) {
+				if (Configure::read('AppProperties.Email.send_mail')) {
 					$options = array(
 						'user' => $this->User->read(),
 					);
@@ -231,7 +231,7 @@ class UsersController extends AppController {
 	}
 
 	public function registerPassword($token = null) {
-		if (!Configure::read('AppProperties.email_send_mail')) {
+		if (!Configure::read('AppProperties.Email.send_mail')) {
 			throw new NotFoundException();
 		}
 		if (is_null($token)) {
@@ -272,7 +272,7 @@ class UsersController extends AppController {
 	}
 
 	public function forgotPassword() {
-		if (!Configure::read('AppProperties.email_send_mail')) {
+		if (!Configure::read('AppProperties.Email.send_mail')) {
 			throw new NotFoundException();
 		}
 		if ($this->request->is('post')) {
@@ -293,7 +293,7 @@ class UsersController extends AppController {
 				$data[$this->User->alias] = array(
 					'id' => $user[$this->User->alias]['id'],
 					'token' => $this->User->token(),
-					'token_expiration' => date('Y-m-d H:i:s', strtotime('+ ' . Configure::read('AppProperties.token_expiration_time') . 'hours')),
+					'token_expiration' => date('Y-m-d H:i:s', strtotime('+ ' . Configure::read('AppProperties.App.token_expiration_time') . 'hours')),
 				);
 				if ($this->User->save($data)) {
 					$options = array(
